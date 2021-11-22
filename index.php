@@ -6,7 +6,7 @@
             <ul class="sidebar-nav">
                 <li class="sidebar-brand"><a href="#page-top">Start Bootstrap</a></li>
                 <li class="sidebar-nav-item"><a href="#page-top">Home</a></li>
-                <li class="sidebar-nav-item"><a href="#about">Awards and Achievements</a></li>
+                <li class="sidebar-nav-item"><a href="#about">List of Presidential Candidates</a></li>
                 <li class="sidebar-nav-item"><a href="#services">Services</a></li>
                 <li class="sidebar-nav-item"><a href="#portfolio">Portfolio</a></li>
                 <li class="sidebar-nav-item"><a href="#contact">Contact</a></li>
@@ -53,7 +53,7 @@
             <div class="container px-4 px-lg-5">
                 <div class="content-section-heading">
                     <h3 class="text-secondary mb-0">Services</h3>
-                    <h2 class="mb-5">Presidential Candidates for 2022</h2>
+                    <h2 class="mb-5">How to Vote for 2022</h2>
                 </div>
                 <div class="row gx-4 gx-lg-5">
                     <div class="col-lg-3 col-md-6 mb-5 mb-lg-0">
@@ -103,7 +103,7 @@
                 </div>
                 <div class="row gx-0">
                     <div class="col-lg-6">
-                        <a class="portfolio-item" href="#!">
+                        <a class="portfolio-item" href="leni.php">
                             <div class="caption">
                                 <div class="caption-content">
                                     <div class="h3">Leni Robredo</div>
