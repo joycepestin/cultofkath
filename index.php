@@ -136,7 +136,7 @@
                         </a>
                     </div>
                     <div class="col-lg-6">
-                        <a class="portfolio-item" href="#!">
+                        <a class="portfolio-item" href="noberto.php">
                             <div class="caption">
                                 <div class="caption-content">
                                     <div class="h3">Norberto B. Gonzales</div>
