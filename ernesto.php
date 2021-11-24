@@ -19,7 +19,7 @@
         <div class="container px-4 px-lg-5">
             <!-- Heading Row-->
             <div class="row gx-4 gx-lg-5 align-items-center my-5">
-                <div class="col-lg-7"><img class="img-fluid rounded mb-4 mb-lg-0" src="./assets/img/ernesto.jpg" alt="..." /></div>
+                <div class="col-lg-7"><img class="img-fluid rounded mb-4 mb-lg-0" src="./assets/img/ernesto.jpeg" alt="..." /></div>
                 <div class="col-lg-5">
                     <h1 class="font-weight-light">Ernesto “Ernie” Corpuz Abella</h1>
                     <p>Ernesto Abella is a Filipino businessman, writer, and former evangelist who served in President Rodrigo Duterte's administration as Presidential Spokesperson (2016–2017) and Undersecretary for Strategic Communications and Research of the Department of Foreign Affairs.</p>
