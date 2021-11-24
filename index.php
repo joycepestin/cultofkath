@@ -160,7 +160,7 @@
                     </div>
 
                     <div class="col-lg-6">
-                        <a class="portfolio-item" href="#!">
+                        <a class="portfolio-item" href="moreno.php">
                             <div class="caption">
                                 <div class="caption-content">
                                     <div class="h3">Francisco Moreno Domagoso</div>
@@ -172,7 +172,7 @@
                     </div>
 
                     <div class="col-lg-6">
-                        <a class="portfolio-item" href="#!">
+                        <a class="portfolio-item" href="pacquiao.php">
                             <div class="caption">
                                 <div class="caption-content">
                                     <div class="h3">Emmanuel Dapidran Pacquiao Sr.</div>
@@ -184,7 +184,7 @@
                     </div>
 
                     <div class="col-lg-6">
-                        <a class="portfolio-item" href="#!">
+                        <a class="portfolio-item" href="bbm.php">
                             <div class="caption">
                                 <div class="caption-content">
                                     <div class="h3">Ferdinand "Bongbong" Romualdez Marcos Jr.</div>
