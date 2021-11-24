@@ -125,7 +125,7 @@
                         </a>
                     </div>
                     <div class="col-lg-6">
-                        <a class="portfolio-item" href="#!">
+                        <a class="portfolio-item" href="ernesto.php">
                             <div class="caption">
                                 <div class="caption-content">
                                     <div class="h3">Ernesto “Ernie” Corpuz Abella</div>
@@ -148,7 +148,7 @@
                     </div>
 
                     <div class="col-lg-6">
-                        <a class="portfolio-item" href="#!">
+                        <a class="portfolio-item" href="lacson.php">
                             <div class="caption">
                                 <div class="caption-content">
                                     <div class="h3">Panfilo "Ping" Morena Lacson Sr </div>
