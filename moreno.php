@@ -55,7 +55,7 @@
                     <div class="card h-100">
                         <div class="card-body">
                             <h2 class="card-title">Authored Bills Passed</h2>
-                            <p class="card-text"></p>
+                            <p class="card-text">No information.</p>
                         </div>
                         <div class="card-footer"><a class="btn btn-primary btn-sm" href="#!">More Info</a></div>
                     </div>
