@@ -1,235 +1,86 @@
-<?php require('components/head.inc.php'); ?>
-    <body id="page-top">
-        <!-- Navigation-->
-        <a class="menu-toggle rounded" href="#"><i class="fas fa-bars"></i></a>
-        <nav id="sidebar-wrapper">
-            <ul class="sidebar-nav">
-                <li class="sidebar-brand"><a href="#page-top">Start Bootstrap</a></li>
-                <li class="sidebar-nav-item"><a href="#page-top">Home</a></li>
-                <li class="sidebar-nav-item"><a href="#about">List of Presidential Candidates</a></li>
-                <li class="sidebar-nav-item"><a href="#services">Services</a></li>
-                <li class="sidebar-nav-item"><a href="#portfolio">Portfolio</a></li>
-                <li class="sidebar-nav-item"><a href="#contact">Contact</a></li>
-            </ul>   
-        </nav>
-        <!-- Header-->
-        <header class="masthead d-flex align-items-center">
-            <div class="container px-4 px-lg-5 text-center">
-                <h1 class="mb-1">Presidential Candidates</h1>
-                <h3 class="mb-5"><em>For 2022 National Elections</em></h3>
-                <a class="btn btn-primary btn-xl" href="#about">Find Out More</a>
+<?php 
+    include "server.php";
+?>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <title>Title</title>
+</head>
+<body>
+
+
+    <?php if(isset($_REQUEST["info"])){?>
+        <?php if($_REQUEST["info"] == "added"){?>
+            <div class="alert alert-success" role="alert">
+                <h4 class="text-center">Post added successfully!</h4>
             </div>
-        </header>
-        <!-- About-->
-        <section class="content-section bg-light" id="about">
-            <div class="container px-4 px-lg-5 text-center">
-                <div class="row gx-4 gx-lg-5 justify-content-center">
-                    <div class="row-list-of-candidates">
-                        <h2>List of Presidential Candidates</h2>
-                        <div class='row'>
-                            <div class="col-sm-4">Maria Leonor Gerona Robredo</div>
-                            <div class="col-sm-4">Ernesto Abella</div>
-                            <div class="col-sm-4">Leodigario "Ka Leody" Quitain de Guzman </div>
-                        </div>
+        <?php } else if($_REQUEST["info"] == "updated"){?>
+            <div class="alert alert-success" role="alert">
+                <h4 class="text-center">Post updated successfully!</h4>
+            </div>
+        <?php } else if($_REQUEST["info"] == "deleted"){?>
+            <div class="alert alert-success" role="alert">
+                <h4 class="text-center">Post deleted successfully!</h4>
+            </div>
+        <?php } ?>
+    <?php } ?>
 
-                        <div class='row'>
-                            <div class="col-sm-4">Norberto Gonzales</div>
-                            <div class="col-sm-4">Panfilo "Ping" Morena Lacson Sr.</div>
-                            <div class="col-sm-4">Francisco Moreno Domagoso</div>
-                        </div>
+    <div class="container my-5" style="max-width:60%, min-width:50%">
+        <form method="POST">
+            <div class="mb-3 form-floating">
+                <input type="text" class="form-control" id="name" name="name" placeholder="Juan Dela Cruz">
+                <label for="name">Name of Candidate</label>
+            </div>
+            <div class="mb-3 form-floating">
+                <textarea class="form-control" placeholder="Awards" id="awards" name="awards"></textarea>
+                <label for="awards">Awards</label>
+            </div>
+            <div class="mb-3 form-floating">
+                <textarea class="form-control" placeholder="Description" id="description" name="description"></textarea>
+                <label for="description">Description</label>
+            </div>
+            <div class="mb-3 form-floating">
+                <textarea class="form-control" placeholder="Achievements" id="achievements" name="achievements"></textarea>
+                <label for="achievements">Achievements</label>
+            </div>
+            <div class="mb-3 form-floating">
+                <textarea class="form-control" placeholder="Legislative Works" id="legislative_works" name="legislative_works"></textarea>
+                <label for="legislative_works">Legislative Works</label>
+            </div>
+            <div class="mb-3 form-floating">
+                <textarea class="form-control" placeholder="Educational " id="educational_attainment" name="educational_attainment"></textarea>
+                <label for="exampleCheck1">Educational Attainment</label>
+            </div>
+            <div class="d-flex justify-content-center">
+                <button name="submit" type="submit" class="btn btn-primary">Submit Details</button>
+            </div>
+        </form>
+    </div>
 
-                        <div class='row'>
-                            <div class="col-sm-4">Emmanuel Dapidran Pacquiao Sr.</div>
-                            <div class="col-sm-4">Ferdinand "Bongbong" Romualdez Marcos Jr.</div>
-                            <div class="col-sm-4">Christopher Lawrence "Bong" Tesoro Go </div>
-                        </div>
-                        <a class="btn btn-dark btn-xl" href="#portfolio">Learn more</a>
-                    </div>
+    <div class="d-flex flex-row container my-5 flex-wrap align-items-center justify-content-center">
+        <?php foreach($query as $q){?>
+        <div class="card m-3" style="width: 18rem;">
+            <div class="card-body">
+                <h5 class="card-title"><?php echo $q['name'];?></h5>
+                <h6 class="card-subtitle mb-2 text-muted"><?php echo $q['awards'];?></h6>
+                <p class="card-text"><?php echo $q['achievements'];?></p>
+                <div class="d-flex justify-content-center">
+                    <a href="candidate.php?id=<?php echo $q['id']; ?>" class="btn btn-primary">View</a>
+                    <a href="edit.php?id=<?php echo $q['id']; ?>" class="btn btn-primary  mx-2">Edit</a>
+                    <form method="POST">
+                        <input type="text" hidden name="id" value="<?php echo $q['id']; ?>">
+                        <button name="delete" class="btn btn-danger">Delete</button>
+                    </form>
                 </div>
+
             </div>
-        </section>
-        <!-- Services-->
-        <section class="content-section bg-primary text-white text-center" id="services">
-            <div class="container px-4 px-lg-5">
-                <div class="content-section-heading">
-                    <h3 class="text-secondary mb-0">Services</h3>
-                    <h2 class="mb-5">How to Vote for 2022</h2>
-                </div>
-                <div class="row gx-4 gx-lg-5">
-                    <div class="col-lg-3 col-md-6 mb-5 mb-lg-0">
-                        <span class="service-icon rounded-circle mx-auto mb-3"><i class="icon-screen-smartphone"></i></span>
-                        <h4><strong>Responsive</strong></h4>
-                        <p class="text-faded mb-0">Looks great on any screen size!</p>
-                    </div>
-                    <div class="col-lg-3 col-md-6 mb-5 mb-lg-0">
-                        <span class="service-icon rounded-circle mx-auto mb-3"><i class="icon-pencil"></i></span>
-                        <h4><strong>Redesigned</strong></h4>
-                        <p class="text-faded mb-0">Freshly redesigned for Bootstrap 5.</p>
-                    </div>
-                    <div class="col-lg-3 col-md-6 mb-5 mb-md-0">
-                        <span class="service-icon rounded-circle mx-auto mb-3"><i class="icon-like"></i></span>
-                        <h4><strong>Favorited</strong></h4>
-                        <p class="text-faded mb-0">
-                            Millions of users
-                            <i class="fas fa-heart"></i>
-                            Start Bootstrap!
-                        </p>
-                    </div>
-                    <div class="col-lg-3 col-md-6">
-                        <span class="service-icon rounded-circle mx-auto mb-3"><i class="icon-mustache"></i></span>
-                        <h4><strong>Question</strong></h4>
-                        <p class="text-faded mb-0">I mustache you a question...</p>
-                    </div>
-                </div>
-            </div>
-        </section>
-        <!-- Callout-->
-        <section class="callout">
-            <div class="container px-4 px-lg-5 text-center">
-                <h2 class="mx-auto mb-5">
-                    Welcome to
-                    <em>your</em>
-                    next website!
-                </h2>
-                <a class="btn btn-primary btn-xl" href="https://startbootstrap.com/theme/stylish-portfolio/">Download Now!</a>
-            </div>
-        </section>
-        <!-- Portfolio-->
-        <section class="content-section" id="portfolio">
-            <div class="container px-4 px-lg-5">
-                <div class="content-section-heading text-center">
-                    <h3 class="text-secondary mb-0">Portfolio</h3>
-                    <h2 class="mb-5">Presidential Candidates</h2>
-                </div>
-                <div class="row gx-0">
-                    <div class="col-lg-6">
-                        <a class="portfolio-item" href="leni.php">
-                            <div class="caption">
-                                <div class="caption-content">
-                                    <div class="h3">Leni Robredo</div>
-                                    <p class="mb-0">is a Filipina lawyer, politician, and social activist who is the 14th and incumbent vice president of the Philippines. </p>
-                                </div>
-                            </div>
-                            <img class="img-fluid" src="assets/img/leni3.jpg" alt="..." />
-                        </a>
-                    </div>
-                    <div class="col-lg-6">
-                        <a class="portfolio-item" href="kaleody.php">
-                            <div class="caption">
-                                <div class="caption-content">
-                                    <div class="h3">Leodigario "Ka Leody" Quitain de Guzman</div>
-                                    <p class="mb-0">is a Filipino unionist and labor rights activist, a socialist federation of militant trade unions. </p>
-                                </div>
-                            </div>
-                            <img class="img-fluid" src="assets/img/kaleody3.jpg" alt="..." />
-                        </a>
-                    </div>
-                    <div class="col-lg-6">
-                        <a class="portfolio-item" href="ernesto.php">
-                            <div class="caption">
-                                <div class="caption-content">
-                                    <div class="h3">Ernesto “Ernie” Corpuz Abella</div>
-                                    <p class="mb-0">is a Filipino businessman, writer, and former evangelist who served in President Rodrigo Duterte's administration as Presidential Spokesperson </p>
-                                </div>
-                            </div>
-                            <img class="img-fluid" src="assets/img/ernesto.jpeg" alt="..." />
-                        </a>
-                    </div>
-                    <div class="col-lg-6">
-                        <a class="portfolio-item" href="noberto.php">
-                            <div class="caption">
-                                <div class="caption-content">
-                                    <div class="h3">Norberto B. Gonzales</div>
-                                    <p class="mb-0">Philippine government official. Founder, chairman Philipine Democratic Socialist Party, since 1973.</p>
-                                </div>  
-                            </div>
-                            <img class="img-fluid" src="assets/img/norberto.jpg" alt="..." />
-                        </a>
-                    </div>
-
-                    <div class="col-lg-6">
-                        <a class="portfolio-item" href="lacson.php">
-                            <div class="caption">
-                                <div class="caption-content">
-                                    <div class="h3">Panfilo "Ping" Morena Lacson Sr </div>
-                                    <p class="mb-0"> is a Filipino politician and former police general serving as a Senator since 2016, and previously from 2001 to 2013.</p>
-                                </div>  
-                            </div>
-                            <img class="img-fluid" src="assets/img/lacson.jpg" alt="..." />
-                        </a>
-                    </div>
-
-                    <div class="col-lg-6">
-                        <a class="portfolio-item" href="moreno.php">
-                            <div class="caption">
-                                <div class="caption-content">
-                                    <div class="h3">Francisco Moreno Domagoso</div>
-                                    <p class="mb-0">Filipino politician & actor currently serving as the 22nd mayor of Manila since 2019. </p>
-                                </div>  
-                            </div>
-                            <img class="img-fluid" src="assets/img/isko2.jpg" alt="..." />
-                        </a>
-                    </div>
-
-                    <div class="col-lg-6">
-                        <a class="portfolio-item" href="pacquiao.php">
-                            <div class="caption">
-                                <div class="caption-content">
-                                    <div class="h3">Emmanuel Dapidran Pacquiao Sr.</div>
-                                    <p class="mb-0">is a Filipino politician and former professional boxer.</p>
-                                </div>  
-                            </div>
-                            <img class="img-fluid" src="assets/img/manny3.jpg" alt="..." />
-                        </a>
-                    </div>
-
-                    <div class="col-lg-6">
-                        <a class="portfolio-item" href="bbm.php">
-                            <div class="caption">
-                                <div class="caption-content">
-                                    <div class="h3">Ferdinand "Bongbong" Romualdez Marcos Jr.</div>
-                                    <p class="mb-0">a Filipino politician who served as a senator from 2010 to 2016. He is the second child and only son of the president and dictator Ferdinand Marcos Sr. </p>
-                                </div>  
-                            </div>
-                            <img class="img-fluid" src="assets/img/bbm.jpg" alt="..." />
-                        </a>
-                    </div>
-
-                    <div class="col-lg-6">
-                        <a class="portfolio-item" href="go.php">
-                            <div class="caption">
-                                <div class="caption-content">
-                                    <div class="h3">Christopher Lawrence "Bong" Tesoro Go </div>
-                                    <p class="mb-0">is a Filipino politician serving as a Senator since 2019. He previously served in President Rodrigo Duterte's Cabinet as Special Assistant to the President</p>
-                                </div>  
-                            </div>
-                            <img class="img-fluid" src="assets/img/bongo.jpg" alt="..." />
-                        </a>
-                    </div>
-
-                </div>
-            </div>
-        </section>
-        <!-- Call to Action-->
-        <section class="content-section bg-primary text-white">
-            <div class="container px-4 px-lg-5 text-center">
-                <h2 class="mb-4">The buttons below are impossible to resist...</h2>
-                <a class="btn btn-xl btn-light me-4" href="#!">Click Me!</a>
-                <a class="btn btn-xl btn-dark" href="#!">Look at Me!</a>
-            </div>
-        </section>
-        <!-- Map-->
-        <div class="map" id="contact">
-            <iframe src="https://maps.google.com/maps?f=q&amp;source=s_q&amp;hl=en&amp;geocode=&amp;q=Twitter,+Inc.,+Market+Street,+San+Francisco,+CA&amp;aq=0&amp;oq=twitter&amp;sll=28.659344,-81.187888&amp;sspn=0.128789,0.264187&amp;ie=UTF8&amp;hq=Twitter,+Inc.,+Market+Street,+San+Francisco,+CA&amp;t=m&amp;z=15&amp;iwloc=A&amp;output=embed"></iframe>
-            <br />  
-            <small><a href="https://maps.google.com/maps?f=q&amp;source=embed&amp;hl=en&amp;geocode=&amp;q=Twitter,+Inc.,+Market+Street,+San+Francisco,+CA&amp;aq=0&amp;oq=twitter&amp;sll=28.659344,-81.187888&amp;sspn=0.128789,0.264187&amp;ie=UTF8&amp;hq=Twitter,+Inc.,+Market+Street,+San+Francisco,+CA&amp;t=m&amp;z=15&amp;iwloc=A"></a></small>
         </div>
-       
-        <!-- Scroll to Top Button-->
-        <a class="scroll-to-top rounded" href="#page-top"><i class="fas fa-angle-up"></i></a>
-        <!-- Bootstrap core JS-->
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
-        <!-- Core theme JS-->
-        <script src="js/scripts.js"></script>
-    </body>
-<?php require('components/footer.inc.php'); ?>
+        <?php } ?>
+    </div>
+</body>
+</html>

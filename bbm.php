@@ -1,4 +1,7 @@
 <?php require('components/header.inc.php'); ?>
+<?php 
+    include "server.php";
+?>
     <body>
         <!-- Responsive navbar-->
         <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
