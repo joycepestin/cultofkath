@@ -18,7 +18,7 @@
         $educational_attainment = $_REQUEST["educational_attainment"];
         $legislative_works = $_REQUEST["legislative_works"];
         if($name && $awards && $achievements && $educational_attainment && $legislative_works){
-            $sql = "INSERT INTO candidates(name, achievements, description, educational_attainment, awards, legislative_works) VALUES('$name', '$achievements', '$educational_attainment', '$awards', '$legislative_works')";
+            $sql = "INSERT INTO candidates(name, achievements, description, educational_attainment, awards, legislative_works) VALUES('$name', '$achievements', '$description', '$educational_attainment', '$awards', '$legislative_works')";
             mysqli_query($conn, $sql);
 
             header("Location: index.php?info=added");

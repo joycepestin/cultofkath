@@ -1,4 +1,7 @@
 <?php require('components/head.inc.php'); ?>
+<?php 
+    include "server.php";
+?>
     <body id="page-top">
         <!-- Navigation-->
         <a class="menu-toggle rounded" href="#"><i class="fas fa-bars"></i></a>
@@ -17,11 +20,11 @@
             <div class="container px-4 px-lg-5 text-center">
                 <h1 class="mb-1">Presidential Candidates</h1>
                 <h3 class="mb-5"><em>For 2022 National Elections</em></h3>
-                <a class="btn btn-primary btn-xl" href="#about">Find Out More</a>
+                <a class="btn btn-primary btn-xl" href="#portfolio">Find Out More</a>
             </div>
         </header>
         <!-- About-->
-        <section class="content-section bg-light" id="about">
+        <!-- <section class="content-section bg-light" id="about">
             <div class="container px-4 px-lg-5 text-center">
                 <div class="row gx-4 gx-lg-5 justify-content-center">
                     <div class="row-list-of-candidates">
@@ -47,9 +50,9 @@
                     </div>
                 </div>
             </div>
-        </section>
+        </section> -->
         <!-- Services-->
-        <section class="content-section bg-primary text-white text-center" id="services">
+        <!-- <section class="content-section bg-primary text-white text-center" id="services">
             <div class="container px-4 px-lg-5">
                 <div class="content-section-heading">
                     <h3 class="text-secondary mb-0">Services</h3>
@@ -82,9 +85,9 @@
                     </div>
                 </div>
             </div>
-        </section>
+        </section> -->
         <!-- Callout-->
-        <section class="callout">
+        <!-- <section class="callout">
             <div class="container px-4 px-lg-5 text-center">
                 <h2 class="mx-auto mb-5">
                     Welcome to
@@ -93,16 +96,29 @@
                 </h2>
                 <a class="btn btn-primary btn-xl" href="https://startbootstrap.com/theme/stylish-portfolio/">Download Now!</a>
             </div>
-        </section>
+        </section> -->
         <!-- Portfolio-->
         <section class="content-section" id="portfolio">
             <div class="container px-4 px-lg-5">
                 <div class="content-section-heading text-center">
-                    <h3 class="text-secondary mb-0">Portfolio</h3>
                     <h2 class="mb-5">Presidential Candidates</h2>
                 </div>
                 <div class="row gx-0">
+
+                <?php foreach($query as $q){?>
                     <div class="col-lg-6">
+                        <a class="portfolio-item" href="candidate.php?id=<?php echo $q['id']; ?>">
+                            <div class="caption">
+                                <div class="caption-content">
+                                    <div class="h3"><?php echo $q['name'];?></div>
+                                    <p class="mb-0"><?php echo $q['description'];?></p>
+                                </div>
+                            </div>
+                            <img class="img-fluid" src="assets/img/leni3.jpg" alt="..." />
+                        </a>
+                    </div>
+                <?php } ?>
+                    <!-- <div class="col-lg-6">
                         <a class="portfolio-item" href="leni.php">
                             <div class="caption">
                                 <div class="caption-content">
@@ -205,25 +221,25 @@
                             </div>
                             <img class="img-fluid" src="assets/img/bongo.jpg" alt="..." />
                         </a>
-                    </div>
+                    </div> -->
 
                 </div>
             </div>
         </section>
         <!-- Call to Action-->
-        <section class="content-section bg-primary text-white">
+        <!-- <section class="content-section bg-primary text-white">
             <div class="container px-4 px-lg-5 text-center">
                 <h2 class="mb-4">The buttons below are impossible to resist...</h2>
                 <a class="btn btn-xl btn-light me-4" href="#!">Click Me!</a>
                 <a class="btn btn-xl btn-dark" href="#!">Look at Me!</a>
             </div>
-        </section>
+        </section> -->
         <!-- Map-->
-        <div class="map" id="contact">
+        <!-- <div class="map" id="contact">
             <iframe src="https://maps.google.com/maps?f=q&amp;source=s_q&amp;hl=en&amp;geocode=&amp;q=Twitter,+Inc.,+Market+Street,+San+Francisco,+CA&amp;aq=0&amp;oq=twitter&amp;sll=28.659344,-81.187888&amp;sspn=0.128789,0.264187&amp;ie=UTF8&amp;hq=Twitter,+Inc.,+Market+Street,+San+Francisco,+CA&amp;t=m&amp;z=15&amp;iwloc=A&amp;output=embed"></iframe>
             <br />  
             <small><a href="https://maps.google.com/maps?f=q&amp;source=embed&amp;hl=en&amp;geocode=&amp;q=Twitter,+Inc.,+Market+Street,+San+Francisco,+CA&amp;aq=0&amp;oq=twitter&amp;sll=28.659344,-81.187888&amp;sspn=0.128789,0.264187&amp;ie=UTF8&amp;hq=Twitter,+Inc.,+Market+Street,+San+Francisco,+CA&amp;t=m&amp;z=15&amp;iwloc=A"></a></small>
-        </div>
+        </div> -->
        
         <!-- Scroll to Top Button-->
         <a class="scroll-to-top rounded" href="#page-top"><i class="fas fa-angle-up"></i></a>
@@ -232,4 +248,3 @@
         <!-- Core theme JS-->
         <script src="js/scripts.js"></script>
     </body>
-<?php require('components/footer.inc.php'); ?>
