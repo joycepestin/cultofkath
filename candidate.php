@@ -25,10 +25,11 @@
                 <div class="row gx-4 gx-lg-5 align-items-center my-5">
                     <div class="col-lg-7"><img class="img-fluid rounded mb-4 mb-lg-0" src="./assets/img/leni.jpg" alt="..." /></div>
                     <div class="col-lg-5">
-                        <h1 class="font-weight-light"><?php echo $q['name'];?></h1>
+                        <h1 class="font-weight-light"><?php echo $q['candidate_name'];?></h1>
                         <p><?php echo $q['description'];?></p>
                     </div>
                 </div>
+            <?php } ?>
                 <!-- Call to Action-->
                 <div class="card text-white bg-secondary my-5 py-4 text-center">
                     <div class="card-body"><p class="text-black m-0"> “We will defeat the old and rotten type of politics. We will hand back to ordinary Filipinos the power to make change.”</p></div>
@@ -37,34 +38,47 @@
                 <div class="row gx-4 gx-lg-5">
                     <div class="col-md-4 mb-5">
                         <div class="card h-100">
-                            <div class="card-body">
-                                <h2 class="card-title">About</h2>
-                                <p class="card-text">The Liberal Party's vice presidential bet, Camarines Sur Representative Maria Leonor "Leni" Robredo, is so far the only female running for the second highest post in the country.</p>
+                            <div class="card-body d-flex flex-column justify-content-center align-items-center">
+                                <h2 class="card-title text-center">Awards</h2>
+                                    <?php foreach($query2 as $achievement){?>
+                                        <div class="d-flex flex-column justify-content-center align-items-center">
+                                            <p><?php echo $achievement['description'];?></p>
+                                        </div>
+                                    <?php } 
+                                    ?>
+                            </div>
+                            <div class="card-footer"><a class="btn btn-primary btn-sm" href="#!">More Info</a></div>
+                        </div>
+                    </div>
+                    
+                    <div class="col-md-4 mb-5">
+                        <div class="card h-100">
+                            <div class="card-body d-flex flex-column justify-content-center align-items-center">
+                                <h2 class="card-title text-center">Achievements</h2>
+                                    <?php foreach($query3 as $achievement){?>
+                                        <div class="d-flex flex-column justify-content-center align-items-center">
+                                            <p><?php echo $achievement['description'];?></p>
+                                        </div>
+                                    <?php } ?>
                             </div>
                             <div class="card-footer"><a class="btn btn-primary btn-sm" href="#!">More Info</a></div>
                         </div>
                     </div>
                     <div class="col-md-4 mb-5">
                         <div class="card h-100">
-                            <div class="card-body">
-                                <h2 class="card-title">Awards and Achievements</h2>
-                                <p class="card-text">Honorary Outstanding Woman Award of the Year 2016</p>
-                                <p class="card-text">Most Influential Filipina Woman of the World 2016</p>
-                            </div>
-                            <div class="card-footer"><a class="btn btn-primary btn-sm" href="#!">More Info</a></div>
-                        </div>
-                    </div>
-                    <div class="col-md-4 mb-5">
-                        <div class="card h-100">
-                            <div class="card-body">
-                                <h2 class="card-title">Authored Bills Passed</h2>
-                                <p class="card-text">Full Disclosure Policy Bill (HB 19), Open Door Policy Act (HB 6286), The People Empowerment Bill (HB 4911), The Comprehensive Anti-Discrimination Bill (HB 3432), Republic Act RA10707</p>
+                        <div class="card-body d-flex flex-column justify-content-center align-items-center">
+                                <h2 class="card-title text-center">Authored Bills Passed</h2>
+                                    <?php foreach($query3 as $achievement){?>
+                                        <div class="d-flex flex-column justify-content-center align-items-center">
+                                            <p><?php echo $achievement['description'];?></p>
+                                        </div>
+                                    <?php } ?>
                             </div>
                             <div class="card-footer"><a class="btn btn-primary btn-sm" href="#!">More Info</a></div>
                         </div>
                     </div>
                 </div>
-            <?php } ?>
+
         </div>
         <!-- Footer-->
         <footer class="py-5 bg-dark">
