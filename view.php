@@ -9,10 +9,9 @@
             <ul class="sidebar-nav">
                 <li class="sidebar-brand"><a href="#page-top">Presidential Candidates</a></li>
                 <li class="sidebar-nav-item"><a href="#page-top">Home</a></li>
-                <li class="sidebar-nav-item"><a href="#about">List of Presidential Candidates</a></li>
+                <li class="sidebar-nav-item"><a href="#about">About</a></li>
                 <li class="sidebar-nav-item"><a href="#services">Guide</a></li>
-                <li class="sidebar-nav-item"><a href="#portfolio">Portfolio</a></li>
-                <li class="sidebar-nav-item"><a href="#contact">Contact</a></li>
+                <li class="sidebar-nav-item"><a href="#portfolio">List of Candidates</a></li>
             </ul>   
         </nav>
        
