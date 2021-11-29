@@ -20,7 +20,6 @@
             <div class="container px-4 px-lg-5 text-center">
                 <h1 class="mb-1">Presidential Candidates</h1>
                 <h3 class="mb-5"><em>For 2022 National Elections</em></h3>
-                <a class="btn btn-primary btn-xl" href="#portfolio">Find Out More</a>
             </div>
         </header>
         
@@ -29,23 +28,23 @@
             <div class="container px-4 px-lg-5 text-center">
                 <div class="row gx-4 gx-lg-5 justify-content-center">
                     <div class="row-list-of-candidates">
-                        <h2>List of Presidential Candidates</h2>
-                        <div class='row'>
-                            <div class="col-sm-4">Maria Leonor Gerona Robredo</div>
-                            <div class="col-sm-4">Ernesto Abella</div>
-                            <div class="col-sm-4">Leodigario "Ka Leody" Quitain de Guzman </div>
-                        </div>
-                        <div class='row'>
-                            <div class="col-sm-4">Norberto Gonzales</div>
-                            <div class="col-sm-4">Panfilo "Ping" Morena Lacson Sr.</div>
-                            <div class="col-sm-4">Francisco Moreno Domagoso</div>
-                        </div>
-                        <div class='row'>
-                            <div class="col-sm-4">Emmanuel Dapidran Pacquiao Sr.</div>
-                            <div class="col-sm-4">Ferdinand "Bongbong" Romualdez Marcos Jr.</div>
-                            <div class="col-sm-4">Christopher Lawrence "Bong" Tesoro Go </div>
-                        </div>
-                        <a class="btn btn-dark btn-xl" href="#portfolio">Learn more</a>
+                        <h2>About the Website</h2>
+                        <p>
+                        Filipinos have a wide range of candidates from whom to choose. They have
+a variety of ideologies, from mundane as their campaign colors and hand
+signs to as complex as their stand on good governance and pandemic
+response. But all of them have expressed their desire to unite the country
+and elevate the Philippines to a higher place than it is presently by their
+words and actions. <br> <br>
+
+This website will be a nonpartisan content management system that aims
+to disseminate factual information about the presidential candidates that
+will help Filipinos to choose whom they shall vote for. The difference
+between success and failure begins with choosing the right leaders who
+shall lead the country to progress. The website will also provide its viewers
+a platform to engage and voice out their insights and opinions about the
+presidential candidates.
+                        </p>
                     </div>
                 </div>
             </div>
