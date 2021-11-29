@@ -20,9 +20,73 @@
             <div class="container px-4 px-lg-5 text-center">
                 <h1 class="mb-1">Presidential Candidates</h1>
                 <h3 class="mb-5"><em>For 2022 National Elections</em></h3>
-                <a class="btn btn-primary btn-xl" href="#portfolio">Find Out More</a>
             </div>
         </header>
+        
+        <!-- About-->
+        <section class="content-section bg-light" id="about">
+            <div class="container px-4 px-lg-5 text-center">
+                <div class="row gx-4 gx-lg-5 justify-content-center">
+                    <div class="row-list-of-candidates">
+                        <h2>About the Website</h2>
+                        <p>
+                        Filipinos have a wide range of candidates from whom to choose. They have
+a variety of ideologies, from mundane as their campaign colors and hand
+signs to as complex as their stand on good governance and pandemic
+response. But all of them have expressed their desire to unite the country
+and elevate the Philippines to a higher place than it is presently by their
+words and actions. <br> <br>
+
+This website will be a nonpartisan content management system that aims
+to disseminate factual information about the presidential candidates that
+will help Filipinos to choose whom they shall vote for. The difference
+between success and failure begins with choosing the right leaders who
+shall lead the country to progress. The website will also provide its viewers
+a platform to engage and voice out their insights and opinions about the
+presidential candidates.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Services-->
+        <section class="content-section bg-primary text-white text-center" id="services">
+            <div class="container px-4 px-lg-5">
+                <div class="content-section-heading">
+                    <h3 class="text-secondary mb-0">Guide</h3>
+                    <h2 class="mb-5">How to Vote for 2022</h2>
+                </div>
+                <div class="row gx-4 gx-lg-5">
+                    <div class="col-lg-3 col-md-6 mb-5 mb-lg-0">
+                        <span class="service-icon rounded-circle mx-auto mb-3"><i class="icon-screen-smartphone"></i></span>
+                        <h4><strong>Identify yourself</strong></h4>
+                        <p class="text-faded mb-0">Look for your name on the voters’ list posted by your polling precinct.</p>
+                    </div>
+                    <div class="col-lg-3 col-md-6 mb-5 mb-lg-0">
+                        <span class="service-icon rounded-circle mx-auto mb-3"><i class="icon-pencil"></i></span>
+                        <h4><strong>Get your ballot</strong></h4>
+                        <p class="text-faded mb-0">Approach the board of elections inspectors (BEI) chairperson to get your ballot, 
+                            ballot secrecy folder, and marking pen.</p>
+                    </div>
+                    <div class="col-lg-3 col-md-6 mb-5 mb-md-0">
+                        <span class="service-icon rounded-circle mx-auto mb-3"><i class="icon-like"></i></span>
+                        <h4><strong>Choose candidates</strong></h4>
+                        <p class="text-faded mb-0">
+                        Take note, you cannot vote for more 
+                        candidates than what it listed beside each position as this can invalidate your vote. 
+                        </p>
+                    </div>
+                    <div class="col-lg-3 col-md-6">
+                        <span class="service-icon rounded-circle mx-auto mb-3"><i class="icon-envelope"></i></span>
+                        <h4><strong>Cast your ballot</strong></h4>
+                        <p class="text-faded mb-0">After filling out your ballot, keep it inside the ballot secrecy folder. 
+                            Bring this to the VCM and insert it into the machine.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
         <section class="content-section" id="portfolio">
             <div class="container px-4 px-lg-5">
                 <div class="content-section-heading text-center">
