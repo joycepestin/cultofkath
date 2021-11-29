@@ -24,8 +24,35 @@
             </div>
         </header>
         
-                  <!-- Services-->
-                  <section class="content-section bg-primary text-white text-center" id="services">
+        <!-- About-->
+        <section class="content-section bg-light" id="about">
+            <div class="container px-4 px-lg-5 text-center">
+                <div class="row gx-4 gx-lg-5 justify-content-center">
+                    <div class="row-list-of-candidates">
+                        <h2>List of Presidential Candidates</h2>
+                        <div class='row'>
+                            <div class="col-sm-4">Maria Leonor Gerona Robredo</div>
+                            <div class="col-sm-4">Ernesto Abella</div>
+                            <div class="col-sm-4">Leodigario "Ka Leody" Quitain de Guzman </div>
+                        </div>
+                        <div class='row'>
+                            <div class="col-sm-4">Norberto Gonzales</div>
+                            <div class="col-sm-4">Panfilo "Ping" Morena Lacson Sr.</div>
+                            <div class="col-sm-4">Francisco Moreno Domagoso</div>
+                        </div>
+                        <div class='row'>
+                            <div class="col-sm-4">Emmanuel Dapidran Pacquiao Sr.</div>
+                            <div class="col-sm-4">Ferdinand "Bongbong" Romualdez Marcos Jr.</div>
+                            <div class="col-sm-4">Christopher Lawrence "Bong" Tesoro Go </div>
+                        </div>
+                        <a class="btn btn-dark btn-xl" href="#portfolio">Learn more</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Services-->
+        <section class="content-section bg-primary text-white text-center" id="services">
             <div class="container px-4 px-lg-5">
                 <div class="content-section-heading">
                     <h3 class="text-secondary mb-0">Guide</h3>
