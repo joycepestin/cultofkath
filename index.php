@@ -165,9 +165,11 @@
                 <h6 class="card-subtitle mb-2 text-muted"><?php echo $q['description'];?></h6>
                 <div class="d-flex justify-content-center">
                     <a href="candidate.php?id=<?php echo $q['id']; ?>" class="btn btn-primary">View</a>
-                    <a href="edit.php?id=<?php echo $q['id']; ?>" class="btn btn-primary mx-2">Edit</a>
+                    <a href="edit.php?is=<?php echo $q['id']; ?>" class="btn btn-primary mx-2">Edit</a>
                     <form method="POST">
                         <input type="text" hidden name="id" value="<?php echo $q['id']; ?>">
+                        <input type="text" hidden name="candidate_name" value="<?php echo $q['candidate_name']; ?>">
+                        <button name="edit" class="btn btn-danger">Edit</button>
                         <button name="delete" class="btn btn-danger">Delete</button>
                     </form>
                 </div>
