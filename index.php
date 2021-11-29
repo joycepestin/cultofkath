@@ -8,7 +8,6 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <body style="background-color:#ECF0F1;">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
     <title>Title</title>
 </head>
@@ -166,9 +165,11 @@
                 <h6 class="card-subtitle mb-2 text-muted"><?php echo $q['description'];?></h6>
                 <div class="d-flex justify-content-center">
                     <a href="candidate.php?id=<?php echo $q['id']; ?>" class="btn btn-primary">View</a>
-                    <a href="edit.php?id=<?php echo $q['id']; ?>" class="btn btn-primary mx-2">Edit</a>
+                    <a href="edit.php?is=<?php echo $q['id']; ?>" class="btn btn-primary mx-2">Edit</a>
                     <form method="POST">
                         <input type="text" hidden name="id" value="<?php echo $q['id']; ?>">
+                        <input type="text" hidden name="candidate_name" value="<?php echo $q['candidate_name']; ?>">
+                        <button name="edit" class="btn btn-danger">Edit</button>
                         <button name="delete" class="btn btn-danger">Delete</button>
                     </form>
                 </div>

@@ -1,8 +1,6 @@
 <?php
-
-session_start();
-$conn = mysqli_connect('localhost', 'root', '' , 'accounts_db') or die ('Unable to connect');
-
+    include "server.php";
+    require('components/login.inc.php'); 
 ?>
 
 <!DOCTYPE html>
@@ -22,37 +20,40 @@ $conn = mysqli_connect('localhost', 'root', '' , 'accounts_db') or die ('Unable 
 </head>
 <body>
     
-    <h2>LOGIN</h2>
-    <div>
-        <form action = "login.php" method = "post">
-            <input type = "text" class = "field" name = "Username" placeholder = "Username" required = ""><br/>
-            <input type = "password" class = "field" name = "Pass" placeholder = "Password" required = ""><br/>
-            <input type = "submit" class = "field" name = "login" value = "Login">
-        </form>
-    </div>
-
-<?php
-    if (isset($_POST['login'])){
-        $Username = $_POST['Username'];
-        $Pass = $_POST['Pass'];
-
-    $select = mysqli_query($conn," SELECT * FROM users WHERE Username = '$Username' AND Pass = '$Pass' ");
-    $row  = mysqli_fetch_array($select);
-
-    if(is_array($row)) {
-        $_SESSION["Username"] = $row['Username'];
-        $_SESSION["Pass"] = $row['Pass'];
-    }   else {
-        echo '<script type = "text/javascript">';
-        echo 'alert("Invalid Username or Password!");';
-        echo 'window.location.href = "login.php" ';
-        echo '</script>';
-    }
-    }
-    if(isset($_SESSION["Username"])){
-        header("Location:index.php");
-    }
-?>
+<div class="login-wrap">
+	<div class="login-html">
+		<input id="tab-1" type="radio" name="tab" class="sign-in" checked><label for="tab-1" class="tab">Sign In</label>
+		<input id="tab-2" type="radio" name="tab" class="for-pwd"><label for="tab-2" class="tab">Forgot Password</label>
+		<div class="login-form">
+			<div class="sign-in-htm">
+				<form action = "login1.php" method = "post">
+					<div class="group">
+						<label for="user" class="label">Username or Email</label>
+						<input id="user" type = "text" class = "input" name = "username" placeholder = "Username" required = ""><br/>
+					</div>
+					<div class="group">
+						<label for="pass" class="label">Password</label>
+						<input id="pass" type = "password" class = "input" name = "password" placeholder = "Password" required = ""><br/>
+					</div>
+					<div class="group">
+						<input type="submit" class="button" name="login" value="Sign In">
+					</div>
+        		</form>
+				<div class="hr"></div>
+			</div>
+			<div class="for-pwd-htm">
+				<div class="group">
+					<label for="user" class="label">Username or Email</label>
+					<input id="user" type="text" class="input">
+				</div>
+				<div class="group">
+					<input type="submit" class="button" value="Reset Password">
+				</div>
+				<div class="hr"></div>
+			</div>
+		</div>
+	</div>
+</div>
 
 </body>
 </html>

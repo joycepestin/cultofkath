@@ -1,4 +1,7 @@
-<?php require('components/login.inc.php'); ?>
+<?php 
+require('components/login.inc.php'); 
+include "server.php";
+?>
 <!------ Include the above in your HEAD tag ---------->
 
   <div class="login-wrap">
@@ -7,17 +10,19 @@
 		<input id="tab-2" type="radio" name="tab" class="for-pwd"><label for="tab-2" class="tab">Forgot Password</label>
 		<div class="login-form">
 			<div class="sign-in-htm">
-				<div class="group">
-					<label for="user" class="label">Username or Email</label>
-					<input id="user" type="text" class="input">
-				</div>
-				<div class="group">
-					<label for="pass" class="label">Password</label>
-					<input id="pass" type="password" class="input" data-type="password">
-				</div>
-				<div class="group">
-					<input type="submit" class="button" value="Sign In">
-				</div>
+				<form action = "login1.php" method = "post">
+					<div class="group">
+						<label for="user" class="label">Username or Email</label>
+						<input id="user" type = "text" class = "input" name = "Username" placeholder = "Username" required = ""><br/>
+					</div>
+					<div class="group">
+						<label for="pass" class="label">Password</label>
+						<input id="pass" type = "password" class = "input" name = "Pass" placeholder = "Password" required = ""><br/>
+					</div>
+					<div class="group">
+						<input type="submit" class="button" value="Sign In">
+					</div>
+        		</form>
 				<div class="hr"></div>
 			</div>
 			<div class="for-pwd-htm">
