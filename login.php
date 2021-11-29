@@ -50,7 +50,7 @@ $conn = mysqli_connect('localhost', 'root', '' , 'accounts_db') or die ('Unable 
     }
     }
     if(isset($_SESSION["Username"])){
-        header("Location:view.php");
+        header("Location:index.php");
     }
 ?>
 
