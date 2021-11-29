@@ -64,7 +64,7 @@
                     <div class="col-lg-3 col-md-6 mb-5 mb-lg-0">
                         <span class="service-icon rounded-circle mx-auto mb-3"><i class="icon-pencil"></i></span>
                         <h4><strong>Get you ballot</strong></h4>
-                        <p class="text-faded mb-0">approach the board of elections inspectors (BEI) chairperson to get your ballot, 
+                        <p class="text-faded mb-0">Approach the board of elections inspectors (BEI) chairperson to get your ballot, 
                             ballot secrecy folder, and marking pen.</p>
                     </div>
                     <div class="col-lg-3 col-md-6 mb-5 mb-md-0">
