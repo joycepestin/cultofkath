@@ -23,6 +23,44 @@
                 <a class="btn btn-primary btn-xl" href="#portfolio">Find Out More</a>
             </div>
         </header>
+        
+                  <!-- Services-->
+                  <section class="content-section bg-primary text-white text-center" id="services">
+            <div class="container px-4 px-lg-5">
+                <div class="content-section-heading">
+                    <h3 class="text-secondary mb-0">Guide</h3>
+                    <h2 class="mb-5">How to Vote for 2022</h2>
+                </div>
+                <div class="row gx-4 gx-lg-5">
+                    <div class="col-lg-3 col-md-6 mb-5 mb-lg-0">
+                        <span class="service-icon rounded-circle mx-auto mb-3"><i class="icon-screen-smartphone"></i></span>
+                        <h4><strong>Identify yourself</strong></h4>
+                        <p class="text-faded mb-0">Look for your name on the voters’ list posted by your polling precinct.</p>
+                    </div>
+                    <div class="col-lg-3 col-md-6 mb-5 mb-lg-0">
+                        <span class="service-icon rounded-circle mx-auto mb-3"><i class="icon-pencil"></i></span>
+                        <h4><strong>Get your ballot</strong></h4>
+                        <p class="text-faded mb-0">Approach the board of elections inspectors (BEI) chairperson to get your ballot, 
+                            ballot secrecy folder, and marking pen.</p>
+                    </div>
+                    <div class="col-lg-3 col-md-6 mb-5 mb-md-0">
+                        <span class="service-icon rounded-circle mx-auto mb-3"><i class="icon-like"></i></span>
+                        <h4><strong>Choose candidates</strong></h4>
+                        <p class="text-faded mb-0">
+                        Take note, you cannot vote for more 
+                        candidates than what it listed beside each position as this can invalidate your vote. 
+                        </p>
+                    </div>
+                    <div class="col-lg-3 col-md-6">
+                        <span class="service-icon rounded-circle mx-auto mb-3"><i class="icon-envelope"></i></span>
+                        <h4><strong>Cast your ballot</strong></h4>
+                        <p class="text-faded mb-0">After filling out your ballot, keep it inside the ballot secrecy folder. 
+                            Bring this to the VCM and insert it into the machine.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
         <section class="content-section" id="portfolio">
             <div class="container px-4 px-lg-5">
                 <div class="content-section-heading text-center">
