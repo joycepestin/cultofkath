@@ -1,20 +1,25 @@
-<?php require('components/head.inc.php'); ?>
-<?php 
-    include "server.php";
+<?php
+    include "./classes/Candidate.php";
+    include "db.php";
+    
+    $candidates = new Candidate;
+    $result = $candidates->getAllCandidates($conn);
 ?>
-    <body id="page-top">
+<?php require('components/head.inc.php'); ?>
+
+<body id="page-top">
         <!-- Navigation-->
         <a class="menu-toggle rounded" href="#"><i class="fas fa-bars"></i></a>
         <nav id="sidebar-wrapper">
             <ul class="sidebar-nav">
-                <li class="sidebar-brand"><a href="#page-top">Start Bootstrap</a></li>
+                <li class="sidebar-brand"><a href="#page-top">Presidential Candidates</a></li>
                 <li class="sidebar-nav-item"><a href="#page-top">Home</a></li>
-                <li class="sidebar-nav-item"><a href="#about">List of Presidential Candidates</a></li>
-                <li class="sidebar-nav-item"><a href="#services">Services</a></li>
-                <li class="sidebar-nav-item"><a href="#portfolio">Portfolio</a></li>
-                <li class="sidebar-nav-item"><a href="#contact">Contact</a></li>
+                <li class="sidebar-nav-item"><a href="#about">About</a></li>
+                <li class="sidebar-nav-item"><a href="#services">Guide</a></li>
+                <li class="sidebar-nav-item"><a href="#portfolio">List of Candidates</a></li>
             </ul>   
         </nav>
+       
         <!-- Header-->
         <header class="masthead d-flex align-items-center">
             <div class="container px-4 px-lg-5 text-center">
@@ -86,7 +91,6 @@ presidential candidates.
                 </div>
             </div>
         </section>
-        
         <section class="content-section" id="portfolio">
             <div class="container px-4 px-lg-5">
                 <div class="content-section-heading text-center">
@@ -94,9 +98,9 @@ presidential candidates.
                 </div>
                 <div class="row gx-0">
 
-                <?php foreach($query as $q){?>
+                <?php foreach($result as $q){?>
                     <div class="col-lg-6">
-                        <a class="portfolio-item" href="candidate.php?id=<?php echo $q['id']; ?>">
+                        <a class="portfolio-item" href="candidate.php?id=<?php echo $q['id']; ?>&candidate_name=<?php echo $q['candidate_name']; ?>">
                             <div class="caption">
                                 <div class="caption-content">
                                     <div class="h3"><?php echo $q['candidate_name'];?></div>
@@ -114,5 +118,5 @@ presidential candidates.
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
         <!-- Core theme JS-->
         <script src="js/scripts.js"></script>
-
     </body>
+</html>

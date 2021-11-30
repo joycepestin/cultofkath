@@ -7361,8 +7361,7 @@ textarea.form-control-lg {
 
 .mb-1 {
   margin-bottom: 0.25rem !important;
-  color: white;
-  
+  color: white;  
 }
 
 .mb-2 {
@@ -11578,4 +11577,8 @@ footer.footer .social-link:hover {
   flex: 1 1 auto;
   padding: 1rem 1rem;
   color: pink;
+}
+
+.head-1{
+  color: black;
 }

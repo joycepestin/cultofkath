@@ -26,7 +26,7 @@
 		<input id="tab-2" type="radio" name="tab" class="for-pwd"><label for="tab-2" class="tab">Forgot Password</label>
 		<div class="login-form">
 			<div class="sign-in-htm">
-				<form action = "login1.php" method = "post">
+				<form action = "login.php" method = "post">
 					<div class="group">
 						<label for="user" class="label">Username or Email</label>
 						<input id="user" type = "text" class = "input" name = "username" placeholder = "Username" required = ""><br/>

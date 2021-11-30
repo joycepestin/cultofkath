@@ -1,13 +1,40 @@
-<?php 
-    //require_once('components/header.inc.php'); 
-    include "server.php";
-?>
-<?php require('components/head1.inc.php'); ?>
-    <body>
+<?php
+    include_once "./classes/Candidate.php";
+    include_once "./classes/Achievement.php";
+    include_once "./classes/Award.php";
+    include_once "./classes/Legislative.php";
+    include_once "./classes/EducationalAttainment.php";
+    include_once "db.php";
+
+    if(isset($_REQUEST["id"])){
+        $id = $_REQUEST["id"];
+    }
+    if(isset($_REQUEST["candidate_name"])){
+        $candidate_name = $_REQUEST["candidate_name"];
+    }
+    
+    $candidates = new Candidate;
+    $result = $candidates->getCandidate($conn, $id);
+
+    $achievements = new Achievement;
+    $achievement_result = $achievements->getAllAchievements($conn, $candidate_name);
+    
+
+    $awards = new Award;
+    $award_result = $awards->getAllAwards($conn, $candidate_name);
+    
+    $educational_attainments = new EducationalAttainment;
+    $educational_attainment_result = $educational_attainment->getAllEduc($conn, $candidate_name);
+
+    $legislatives = new Legislative;
+    $legislative_result = $legislatives->getAllLegislatives($conn, $candidate_name);
+?>    
+<?php require('components/head.inc.php'); ?>
+<body>
         <!-- Responsive navbar-->
         <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
             <div class="container px-5">
-                <a class="navbar-brand" href="view.php">Presidential Candidates</a>
+                <a class="navbar-brand" href="index.php">Presidential Candidates</a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
@@ -22,7 +49,7 @@
         <!-- Page Content-->
         <div class="container px-4 px-lg-5">
             <!-- Heading Row-->
-            <?php foreach($query as $q){?>
+            <?php foreach($result as $q){?>
                 <div class="row gx-4 gx-lg-5 align-items-center my-5">
                     <div class="col-lg-7"><img class="img-fluid rounded mb-4 mb-lg-0" src="./assets/img/leni.jpg" alt="..." /></div>
                     <div class="col-lg-5">
@@ -41,9 +68,9 @@
                         <div class="card h-100">
                             <div class="card-body d-flex flex-column justify-content-center align-items-center">
                                 <h2 class="card-title text-center">Awards</h2>
-                                    <?php foreach($query2 as $achievement){?>
+                                    <?php foreach($award_result as $award){?>
                                         <div class="d-flex flex-column justify-content-center align-items-center">
-                                            <p><?php echo $achievement['description'];?></p>
+                                            <p><?php echo $award['description'];?></p>
                                         </div>
                                     <?php } 
                                     ?>
@@ -56,7 +83,7 @@
                         <div class="card h-100">
                             <div class="card-body d-flex flex-column justify-content-center align-items-center">
                                 <h2 class="card-title text-center">Achievements</h2>
-                                    <?php foreach($query3 as $achievement){?>
+                                    <?php foreach($achievement_result as $achievement){?>
                                         <div class="d-flex flex-column justify-content-center align-items-center">
                                             <p><?php echo $achievement['description'];?></p>
                                         </div>
@@ -68,10 +95,23 @@
                     <div class="col-md-4 mb-5">
                         <div class="card h-100">
                         <div class="card-body d-flex flex-column justify-content-center align-items-center">
-                                <h2 class="card-title text-center">Authored Bills Passed</h2>
-                                    <?php foreach($query3 as $achievement){?>
+                                <h2 class="card-title text-center">Educational Attainment</h2>
+                                    <?php foreach($educational_attainment_result as $educational_attainment){?>
                                         <div class="d-flex flex-column justify-content-center align-items-center">
-                                            <p><?php echo $achievement['description'];?></p>
+                                            <p><?php echo $educational_attainment['description'];?></p>
+                                        </div>
+                                    <?php } ?>
+                            </div>
+                            <div class="card-footer"><a class="btn btn-primary btn-sm" href="#!">More Info</a></div>
+                        </div>
+                    </div>
+                    <div class="col-md-4 mb-5">
+                        <div class="card h-100">
+                        <div class="card-body d-flex flex-column justify-content-center align-items-center">
+                                <h2 class="card-title text-center">Legislative Works</h2>
+                                    <?php foreach($legislative_result as $legislative){?>
+                                        <div class="d-flex flex-column justify-content-center align-items-center">
+                                            <p><?php echo $legislative['description'];?></p>
                                         </div>
                                     <?php } ?>
                             </div>
@@ -90,4 +130,3 @@
         <!-- Core theme JS-->
         <script src="js/scripts.js"></script>
     </body>
-</html>
