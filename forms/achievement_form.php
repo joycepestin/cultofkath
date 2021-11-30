@@ -5,33 +5,49 @@
     $candidate = new Candidate;
     $achievement = new Achievement;
     $candidate_name = $_REQUEST["candidate_name"];
+    $id = $_REQUEST["candidate_id"];
 
     if(isset($_REQUEST["add_achievement"])){
 
-        if(isset($_REQUEST["candidate_name"]) && isset($_REQUEST["description"])){
+        if(isset($_REQUEST["candidate_id"]) && isset($_REQUEST["description"])){
             $description = $_REQUEST["description"];
-            $achievement->createAchievement($conn, $candidate_name, $description);
+            $id = $_REQUEST["candidate_id"];
+            $achievement->createAchievement($conn, $id, $description);
         }
     }    
 
     if(isset($_REQUEST["delete_achievement"])){
-        $id = $_REQUEST["id"];
-        $achievement->deleteAchievement($conn, $id);
+        $item_id = $_REQUEST["id"];
+        $achievement->deleteAchievement($conn, $item_id);
     }    
 
-    $achievement_result = $achievement->getAllAchievements($conn, $candidate_name);
+    $achievement_result = $achievement->getAllAchievements($conn, $id);
 
     if(isset($_REQUEST["next"])){
-        if(isset($_REQUEST["candidate_name"]) && isset($_REQUEST["description"])){
-            header("location: award_form.php?candidate_name=$candidate_name");
+        if(!isset($_REQUEST["editing"])){
+            if(isset($_REQUEST["candidate_name"]) && isset($_REQUEST["description"])){
+                header("location: award_form.php?candidate_id=$id&candidate_name=$candidate_name");
+            }
+        }
+        else{
+            header("location: award_form.php?candidate_id=$id&candidate_name=$candidate_name&editing=1");
         }
     }
 
     if(isset($_REQUEST["back"])){
-        $candidate->deleteCandidateByName($conn,$candidate_name);
-        $achievement->deleteAllAchievements($conn,$candidate_name);
-        header("location: candidate_form.php?candidate_name=$candidate_name");
+        if(isset($_REQUEST["editing"])){
+            $edit = $_REQUEST["editing"];
+            if($edit == "1"){
+                header("location: candidate_form.php");
+            }
+        }
+        else{
+            header("location: candidate_form.php");
+            $candidate->deleteCandidate($conn,$id);
+        }
     }
+
+
 ?>
 
 <!DOCTYPE html>

@@ -15,7 +15,7 @@
         }
 
         function deleteAllAwards($conn, $candidate_name){
-            $sql = "DELETE FROM awards WHERE candidate_name = $candidate_name";
+            $sql = "DELETE FROM awards WHERE candidate_name = '$candidate_name'";
             return mysqli_query($conn, $sql);
         }
 

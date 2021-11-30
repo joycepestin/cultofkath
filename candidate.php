@@ -2,6 +2,8 @@
     include_once "./classes/Candidate.php";
     include_once "./classes/Achievement.php";
     include_once "./classes/Award.php";
+    include_once "./classes/LegislativeWork.php";
+    include_once "./classes/EducationalAttainment.php";
     include_once "db.php";
 
     if(isset($_REQUEST["id"])){
@@ -15,12 +17,18 @@
     $result = $candidates->getCandidate($conn, $id);
 
     $achievements = new Achievement;
-    $achievement_result = $achievements->getAllAchievements($conn, $candidate_name);
+    $achievement_result = $achievements->getAllAchievements($conn, $id);
 
     $awards = new Award;
-    $award_result = $awards->getAllAwards($conn, $candidate_name);
+    $award_result = $awards->getAllAwards($conn, $id);
+
+    $legislativeWork = new LegislativeWork;
+    $legislative_result = $legislativeWork->getAllLegislativeWorks($conn, $id);
+
+    $educational = new EducationalAttainment;
+    $educational_result = $educational->getAllEducationalAttainments($conn, $id);
 ?>
-<?php require('components/head.inc.php'); ?>
+<?php require('components/head1.inc.php'); ?>
 <body>
         <!-- Responsive navbar-->
         <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
@@ -38,24 +46,45 @@
             </div>
         </nav>
         <!-- Page Content-->
+        
         <div class="container px-4 px-lg-5">
             <!-- Heading Row-->
             <?php foreach($result as $q){?>
                 <div class="row gx-4 gx-lg-5 align-items-center my-5">
                     <div class="col-lg-7"><img class="img-fluid rounded mb-4 mb-lg-0" src="./assets/img/leni.jpg" alt="..." /></div>
                     <div class="col-lg-5">
-                        <h1 class="font-weight-light"><?php echo $q['candidate_name'];?></h1>
+                        <h1 class="font-weight-light"><?php echo $q['full_name'];?></h1>
                         <p><?php echo $q['description'];?></p>
                     </div>
                 </div>
             <?php } ?>
                 <!-- Call to Action-->
-                <div class="card text-white bg-secondary my-5 py-4 text-center">
-                    <div class="card-body"><p class="text-black m-0"> “We will defeat the old and rotten type of politics. We will hand back to ordinary Filipinos the power to make change.”</p></div>
+                <div class="card text-white bg-dark my-5 py-4 text-center">
+                    <div class="card-body"><p class="text-white m-0"> “We will defeat the old and rotten type of politics. We will hand back to ordinary Filipinos the power to make change.”</p></div>
                 </div>
                 <!-- Content Row-->
+
+
                 <div class="row gx-4 gx-lg-5">
-                    <div class="col-md-4 mb-5">
+
+
+                <div class="col-md-6 mb-5">
+                        <div class="card h-100">
+                        <div class="card-body d-flex flex-column justify-content-center align-items-center">
+                                <h2 class="card-title text-center">Educational Attainment</h2>
+                                    <?php foreach($educational_result as $educational){?>
+                                        <div class="d-flex flex-column justify-content-center align-items-center">
+                                            <p><?php echo $educational['description'];?></p>
+                                        </div>
+                                    <?php } ?>
+                            </div>
+                            <!-- <div class="card-footer"><a class="btn btn-primary btn-sm" href="#!">More Info</a></div> -->
+                        </div>
+                    </div>
+
+
+
+                    <div class="col-md-6 mb-5">
                         <div class="card h-100">
                             <div class="card-body d-flex flex-column justify-content-center align-items-center">
                                 <h2 class="card-title text-center">Awards</h2>
@@ -66,11 +95,11 @@
                                     <?php } 
                                     ?>
                             </div>
-                            <div class="card-footer"><a class="btn btn-primary btn-sm" href="#!">More Info</a></div>
+                            <!-- <div class="card-footer"><a class="btn btn-primary btn-sm" href="#!">More Info</a></div> -->
                         </div>
                     </div>
                     
-                    <div class="col-md-4 mb-5">
+                    <div class="col-md-6 mb-5">
                         <div class="card h-100">
                             <div class="card-body d-flex flex-column justify-content-center align-items-center">
                                 <h2 class="card-title text-center">Achievements</h2>
@@ -80,20 +109,21 @@
                                         </div>
                                     <?php } ?>
                             </div>
-                            <div class="card-footer"><a class="btn btn-primary btn-sm" href="#!">More Info</a></div>
+                            <!-- <div class="card-footer"><a class="btn btn-primary btn-sm" href="#!">More Info</a></div> -->
                         </div>
                     </div>
-                    <div class="col-md-4 mb-5">
+                    
+                    <div class="col-md-6 mb-5">
                         <div class="card h-100">
                         <div class="card-body d-flex flex-column justify-content-center align-items-center">
                                 <h2 class="card-title text-center">Authored Bills Passed</h2>
-                                    <?php foreach($query3 as $achievement){?>
+                                    <?php foreach($legislative_result as $legislative){?>
                                         <div class="d-flex flex-column justify-content-center align-items-center">
-                                            <p><?php echo $achievement['description'];?></p>
+                                            <p><?php echo $legislative['description'];?></p>
                                         </div>
                                     <?php } ?>
                             </div>
-                            <div class="card-footer"><a class="btn btn-primary btn-sm" href="#!">More Info</a></div>
+                            <!-- <div class="card-footer"><a class="btn btn-primary btn-sm" href="#!">More Info</a></div> -->
                         </div>
                     </div>
                 </div>

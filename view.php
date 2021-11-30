@@ -103,7 +103,7 @@ presidential candidates.
                         <a class="portfolio-item" href="candidate.php?id=<?php echo $q['id']; ?>&candidate_name=<?php echo $q['candidate_name']; ?>">
                             <div class="caption">
                                 <div class="caption-content">
-                                    <div class="h3"><?php echo $q['candidate_name'];?></div>
+                                    <div class="h3"><?php echo $q['full_name'];?></div>
                                     <p class="mb-0"><?php echo $q['description'];?></p>
                                 </div>
                             </div>

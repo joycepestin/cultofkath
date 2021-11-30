@@ -1,30 +1,29 @@
 <?php 
-    require_once('..\classes\Award.php');
-    require_once('..\classes\Achievement.php');
+    require_once('..\classes\LegislativeWork.php');
     require_once('..\classes\Candidate.php');
     require_once('..\db.php');
-    $award = new Award;
+    $legislative = new LegislativeWork;
     $candidate = new Candidate;
     $candidate_name = $_REQUEST["candidate_name"];
     $id = $_REQUEST["candidate_id"];
 
-    if(isset($_REQUEST["add_award"])){
+    if(isset($_REQUEST["add_legislative"])){
         if(isset($_REQUEST["candidate_id"]) && isset($_REQUEST["description"])){
             $description = $_REQUEST["description"];
-            $award->createAward($conn, $id, $description);
+            $legislative->createLegislativeWork($conn, $id, $description);
         }
     }
     
     if(isset($_REQUEST["delete"])){
         $item_id = $_REQUEST["id"];
-        $award->deleteAward($conn, $item_id);
+        $legislative->deleteLegislativeWork($conn, $item_id);
     }      
 
-    $award_result = $award->getAllAwards($conn, $id);
+    $legislative_result = $legislative->getAllLegislativeWorks($conn, $id);
 
     if(isset($_REQUEST["submit"])){
         if(isset($_REQUEST["candidate_name"]) && isset($_REQUEST["description"])){
-            header("location: legislative_form.php?candidate_id=$id&candidate_name=$candidate_name");
+            header("location: educational_form.php?candidate_id=$id&candidate_name=$candidate_name");
         }
     }
 
@@ -55,26 +54,26 @@
     <div class="container my-5" style="max-width:60%, min-width:50%">
         <form method="POST">
                 <div class="mb-3 form-floating d-flex flex-row">
-                        <textarea class="form-control" placeholder="Award" id="description" name="description"></textarea>
-                        <label for="description">Award</label>           
-                        <button name="add_award" type="submit" class="m-2 btn btn-primary">Add</button>
+                        <textarea class="form-control" placeholder="Legislative Work" id="description" name="description"></textarea>
+                        <label for="description">Legislative Work</label>           
+                        <button name="add_legislative" type="submit" class="m-2 btn btn-primary">Add</button>
                 </div>
-            <?php if(isset($award_result)){ ?> 
+            <?php if(isset($legislative_result)){ ?> 
                     <div class="form-floating d-flex flex-column mb-2">
                         <table class="table table-info">
                         <thead>
                             <tr>
-                                <th scope="col">Awards</th>
+                                <th scope="col">Legislative Works</th>
                                 <th scope="col">Action</th>
                             </tr>
                         </thead>
                         <tbody>
-                            <?php foreach($award_result as $index=>$award){ ?>
+                            <?php foreach($legislative_result as $index=>$legislative){ ?>
                                 <tr>
-                                    <td><?php echo $award['description'];?></td>
+                                    <td><?php echo $legislative['description'];?></td>
                                     <form method="POST">
                                         <input type="text" hidden name="index" value="<?php echo $index; ?>">
-                                        <input type="text" hidden name="id" value="<?php echo $award['id']; ?>">
+                                        <input type="text" hidden name="id" value="<?php echo $legislative['id']; ?>">
                                         <td><button name="delete" type="submit" class="btn btn-danger">Delete</button></td>
                                     </form>
                                 </tr>
