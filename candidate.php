@@ -33,7 +33,7 @@
             <?php } ?>
                 <!-- Call to Action-->
                 <div class="card text-white bg-secondary my-5 py-4 text-center">
-                    <div class="card-body"><p class="text-black m-0"> “We will defeat the old and rotten type of politics. We will hand back to ordinary Filipinos the power to make change.”</p></div>
+                    <div class="card-body"><p class="text-white m-0"> “We will defeat the old and rotten type of politics. We will hand back to ordinary Filipinos the power to make change.”</p></div>
                 </div>
                 <!-- Content Row-->
                 <div class="row gx-4 gx-lg-5">
