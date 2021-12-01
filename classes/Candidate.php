@@ -4,11 +4,12 @@
     class Candidate{
         public $id;
         public $candidate_name;
-        public $full_name;
         public $description;
+        public $full_name;
+        public $image_url;
 
-        function createCandidate($conn, $candidate_name, $description, $full_name){
-            $sql = "INSERT INTO candidates(candidate_name, description, full_name) VALUES('$candidate_name','$description', '$candidate_name')";
+        function createCandidate($conn, $candidate_name, $description, $full_name, $image_url){
+            $sql = "INSERT INTO candidates(candidate_name, description, full_name, image_url) VALUES('$candidate_name','$description', '$candidate_name', '$image_url')";
             return mysqli_query($conn, $sql);
         }
 
@@ -40,8 +41,8 @@
             return mysqli_query($conn, $sql);
         }
 
-        function updateCandidate($conn, $id, $full_name, $description){
-            $sql = "UPDATE candidates SET full_name = '$full_name', description = '$description' WHERE id = $id";
+        function updateCandidate($conn, $id, $full_name, $description, $image_url){
+            $sql = "UPDATE candidates SET full_name = '$full_name', description = '$description', full_name = '$full_name', image_url = '$image_url' WHERE id = $id";
             return mysqli_query($conn, $sql);
         }
 

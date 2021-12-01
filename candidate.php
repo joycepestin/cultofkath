@@ -51,7 +51,7 @@
             <!-- Heading Row-->
             <?php foreach($result as $q){?>
                 <div class="row gx-4 gx-lg-5 align-items-center my-5">
-                    <div class="col-lg-7"><img class="img-fluid rounded mb-4 mb-lg-0" src="./assets/img/leni.jpg" alt="..." /></div>
+                    <div class="col-lg-7"><img class="img-fluid rounded mb-4 mb-lg-0" src="forms/uploads/<?php echo $q['image_url'];?>" /></div>
                     <div class="col-lg-5">
                         <h1 class="font-weight-light"><?php echo $q['full_name'];?></h1>
                         <p><?php echo $q['description'];?></p>
