@@ -57,6 +57,16 @@
     <title>Educational Form</title>
 </head>
 <body>
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+            <div class="container px-5">
+                <a class="navbar-brand" href="index.php">Presidential Candidates</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
+            </div>
+
+            <form method="POST" action="../logout.php">
+                    <button name="edit" class="btn btn-danger">Logout</button>
+            </form>
+</nav>
     <div class="container my-5" style="max-width:60%, min-width:50%">
         <form method="POST">
                 <div class="mb-3 form-floating d-flex flex-row">

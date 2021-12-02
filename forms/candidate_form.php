@@ -26,7 +26,7 @@
             header("location: achievement_form.php?candidate_id=$id&candidate_name=$candidate_name&editing=1");
         }
         else{
-            if(isset($_REQUEST["full_name"]) && isset($_REQUEST["description"]) && $_FILES['image'] && $_REQUEST["full_name"] != "" && $_REQUEST["description"] != "" &&  $_FILES["image"] != "" ){
+            if(isset($_REQUEST["full_name"]) && isset($_REQUEST["description"]) && $_FILES['image'] && $_REQUEST["full_name"] != "" && $_REQUEST["description"] != "" &&  $_FILES["image"]){
 
                 $img_name = $_FILES['image']['name'];
                 $img_size = $_FILES['image']['size'];
@@ -154,6 +154,17 @@
     <title>Candidate Form</title>
 </head>
 <body>
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+            <div class="container px-5">
+                <a class="navbar-brand" href="index.php">Presidential Candidates</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
+            </div>
+
+            <form method="POST" action="../logout.php">
+                    <button name="edit" class="btn btn-danger">Logout</button>
+            </form>
+</nav>
+
 
     <?php if(isset($_REQUEST["info"])){ ?>
             <?php if($_REQUEST["info"] == "added"){ ?>
@@ -222,12 +233,5 @@
     </div>
     <?php } ?>
 
-    <div class="container mx-auto">
-            <div class="d-flex justify-content-center align-items-center">
-                <form method="POST" action="../logout.php">
-                                <button name="edit" class="btn btn-danger">Logout</button>
-                </form>
-            </div>
-        </div>
 </body>
 </html>
