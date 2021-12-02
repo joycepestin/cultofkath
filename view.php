@@ -97,19 +97,20 @@ presidential candidates.
                     <h2 class="mb-5">Presidential Candidates</h2>
                 </div>
                 <div class="row gx-0">
-
-                <?php foreach($result as $q){?>
-                    <div class="col-lg-6">
-                        <a class="portfolio-item" href="candidate.php?id=<?php echo $q['id']; ?>&candidate_name=<?php echo $q['candidate_name']; ?>">
-                            <div class="caption">
-                                <div class="caption-content">
-                                    <div class="h3"><?php echo $q['full_name'];?></div>
-                                    <p class="mb-0"><?php echo $q['description'];?></p>
+                <?php if($result){?>
+                    <?php foreach($result as $q){?>
+                        <div class="col-lg-6">
+                            <a class="portfolio-item" href="candidate.php?id=<?php echo $q['id']; ?>&candidate_name=<?php echo $q['candidate_name']; ?>">
+                                <div class="caption">
+                                    <div class="caption-content">
+                                        <div class="h3"><?php echo $q['full_name'];?></div>
+                                        <p class="mb-0"><?php echo $q['description'];?></p>
+                                    </div>
                                 </div>
-                            </div>
-                            <img class="img-fluid" src="forms/uploads/<?php echo $q['image_url'];?>" alt="..." />
-                        </a>
-                    </div>
+                                <img class="img-fluid" src="forms/uploads/<?php echo $q['image_url'];?>" alt="..." />
+                            </a>
+                        </div>
+                    <?php } ?>
                 <?php } ?>
                     
         <!-- Scroll to Top Button-->

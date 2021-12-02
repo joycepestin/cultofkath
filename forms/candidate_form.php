@@ -197,25 +197,27 @@
 
     <?php if(!isset($_REQUEST["candidate_id"])) { ?>
     <div class="d-flex flex-row container my-5 flex-wrap align-items-center justify-content-center">
+    <?php if($result){?>
         <?php foreach($result as $q){?>
-        <div class="card m-3" style="width: 18rem;">
-            <div class="card-body">
-                <h5 class="card-title"><?php echo $q['full_name'];?></h5>
-                <h6 class="card-subtitle mb-2 text-muted"><?php echo $q['description'];?></h6>
-                <div class="d-flex justify-content-center">
-                    <a href="../candidate.php?id=<?php echo $q['id']; ?>&candidate_name=<?php echo $q['candidate_name']; ?>" class="btn btn-primary">View</a>                
-                    <form method="POST">
-                        <input type="text" hidden name="candidate_id" value="<?php echo $q['id']; ?>">
-                        <button name="edit" class="btn btn-danger">Edit</button>
-                    </form>
-                    <form method="POST">
-                        <input type="text" hidden name="id" value="<?php echo $q['id']; ?>">
-                        <input type="text" hidden name="candidate_name" value="<?php echo $q['candidate_name']; ?>">
-                        <button name="delete" class="btn btn-danger">Delete</button>
-                    </form>
+            <div class="card m-3" style="width: 18rem;">
+                <div class="card-body">
+                    <h5 class="card-title"><?php echo $q['full_name'];?></h5>
+                    <h6 class="card-subtitle mb-2 text-muted"><?php echo $q['description'];?></h6>
+                    <div class="d-flex justify-content-center">
+                        <a href="../candidate.php?id=<?php echo $q['id']; ?>&candidate_name=<?php echo $q['candidate_name']; ?>" class="btn btn-primary">View</a>                
+                        <form method="POST">
+                            <input type="text" hidden name="candidate_id" value="<?php echo $q['id']; ?>">
+                            <button name="edit" class="btn btn-danger">Edit</button>
+                        </form>
+                        <form method="POST">
+                            <input type="text" hidden name="id" value="<?php echo $q['id']; ?>">
+                            <input type="text" hidden name="candidate_name" value="<?php echo $q['candidate_name']; ?>">
+                            <button name="delete" class="btn btn-danger">Delete</button>
+                        </form>
+                    </div>
                 </div>
             </div>
-        </div>
+        <?php } ?>
         <?php } ?>
     </div>
     <?php } ?>

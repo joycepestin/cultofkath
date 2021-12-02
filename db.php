@@ -1,4 +1,4 @@
 <?php 
-    // $conn = mysqli_connect("remotemysql.com","vh3NHBbC7P","URYoR09zxD","vh3NHBbC7P");
-    $conn = mysqli_connect("localhost","root","","itelec");
+    $conn = mysqli_connect("remotemysql.com","7RasSB6V2f","p0oUCzPoRM","7RasSB6V2f");
+    // $conn = mysqli_connect("localhost","root","","itelec");
 ?>
