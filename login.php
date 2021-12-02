@@ -1,6 +1,31 @@
 <?php
-    include "server.php";
+    include "db.php";
     require('components/login.inc.php'); 
+?>
+<?php 
+
+	if (isset($_POST['login'])){
+    	$Username = $_POST['username'];
+    	$Pass = $_POST['password'];
+    
+    	$select = mysqli_query($conn," SELECT * FROM users WHERE username = '$Username' AND password = '$Pass' ");
+    	$row  = mysqli_fetch_array($select);
+
+    	if(is_array($row)) {
+        	$_SESSION["username"] = $row['username'];
+        	$_SESSION["password"] = $row['password'];
+    	}   else {
+        	echo '<script type = "text/javascript">';
+        	echo 'alert("Invalid Username or Password!");';
+        	echo 'window.location.href = "login.php" ';
+        	echo '</script>';
+    	}
+
+    }
+    if(isset($_SESSION["username"])){
+        header("Location:view.php");
+    }
+
 ?>
 
 <!DOCTYPE html>
