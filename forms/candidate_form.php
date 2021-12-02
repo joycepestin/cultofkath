@@ -221,5 +221,11 @@
         <?php } ?>
     </div>
     <?php } ?>
+
+            <div class="container mx-auto">
+                <form method="POST" action="../logout.php">
+                            <button name="edit" class="btn btn-danger">Logout</button>
+                </form>
+            </div>
 </body>
 </html>
