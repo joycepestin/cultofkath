@@ -8,7 +8,7 @@
     $id = $_REQUEST["candidate_id"];
 
     if(isset($_REQUEST["add_legislative"])){
-        if(isset($_REQUEST["candidate_id"]) && isset($_REQUEST["description"])){
+        if(isset($_REQUEST["candidate_id"]) && isset($_REQUEST["description"]) &&  $_REQUEST["description"] != ""){
             $description = $_REQUEST["description"];
             $legislative->createLegislativeWork($conn, $id, $description);
         }
@@ -54,7 +54,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
-    <title>Title</title>
+    <title>Legislative Work Form</title>
 </head>
 <body>
     <div class="container my-5" style="max-width:60%, min-width:50%">
