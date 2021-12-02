@@ -16,7 +16,7 @@
 
     if(isset($_REQUEST["update"])){
         $item_id = $_REQUEST["id"];
-        $description = $_REQUEST["description"];
+        $description = $_REQUEST["new_description"];
         $educational->updateEducationalAttainment($conn, $item_id, $description);
     }   
     
@@ -77,7 +77,7 @@
                             <?php foreach($educational_result as $index=>$educational){ ?>
                                 <tr>
                                     <form method="POST">
-                                        <td><input type="text" class="form-control" id="description" name="description" value="<?php echo $educational['description'];?>"><td>
+                                        <td><input type="text" class="form-control" id="description" name="new_description" value="<?php echo $educational['description'];?>"><td>
                                         <input type="text" hidden name="index" value="<?php echo $index; ?>">
                                         <input type="text" hidden name="id" value="<?php echo $educational['id']; ?>">
                                         <td><button name="update" type="submit" class="btn btn-success">Update</button></td>

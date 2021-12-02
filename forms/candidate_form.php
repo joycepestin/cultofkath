@@ -135,8 +135,9 @@
             $full_name = $ob["full_name"];
             $candidate_name = $ob["candidate_name"];
             $description = $ob["description"];
+            $image_url = $ob["image_url"];
         }
-        header("location: candidate_form.php?candidate_id=$id&candidate_name=$candidate_name&full_name=$full_name&description=$description&editing=1");
+        header("location: candidate_form.php?candidate_id=$id&candidate_name=$candidate_name&full_name=$full_name&description=$description&image_url=$image_url&editing=1");
     }
 
     //Upload image

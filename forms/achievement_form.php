@@ -23,7 +23,7 @@
 
     if(isset($_REQUEST["update"])){
         $item_id = $_REQUEST["id"];
-        $description = $_REQUEST["description"];
+        $description = $_REQUEST["new_description"];
         $achievement->updateAchievement($conn, $item_id, $description);
     }   
 
@@ -85,7 +85,7 @@
                         <?php foreach($achievement_result as $index=>$achievement){ ?>
                             <tr>
                                 <form method="POST">
-                                    <td><input type="text" class="form-control" id="description" name="description" value="<?php echo $achievement['description'];?>"><td>
+                                    <td><input type="text" class="form-control" id="description" name="new_description" value="<?php echo $achievement['description'];?>"><td>
                                     <input type="text" hidden name="index" value="<?php echo $index; ?>">
                                     <input type="text" hidden name="id" value="<?php echo $achievement['id']; ?>">
                                     <td><button name="update" type="submit" class="btn btn-success">Update</button></td>

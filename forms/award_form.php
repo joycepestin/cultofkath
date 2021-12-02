@@ -17,7 +17,7 @@
 
     if(isset($_REQUEST["update"])){
         $item_id = $_REQUEST["id"];
-        $description = $_REQUEST["description"];
+        $description = $_REQUEST["new_description"];
         $award->updateAward($conn, $item_id, $description);
     }   
     
@@ -78,7 +78,7 @@
                             <?php foreach($award_result as $index=>$award){ ?>
                                 <tr>
                                 <form method="POST">
-                                    <td><input type="text" class="form-control" id="description" name="description" value="<?php echo $award['description'];?>"><td>
+                                    <td><input type="text" class="form-control" id="description" name="new_description" value="<?php echo $award['description'];?>"><td>
                                     <input type="text" hidden name="index" value="<?php echo $index; ?>">
                                     <input type="text" hidden name="id" value="<?php echo $award['id']; ?>">
                                     <td><button name="update" type="submit" class="btn btn-success">Update</button></td>
