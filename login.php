@@ -23,7 +23,7 @@
 
     }
     if(isset($_SESSION["username"])){
-        header("Location:forms/candidate_form.php");
+        header("Location:candidate_form.php");
     }
 
 ?>

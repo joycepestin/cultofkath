@@ -1,10 +1,10 @@
 <?php
-    include_once "./classes/Candidate.php";
-    include_once "./classes/Achievement.php";
-    include_once "./classes/Award.php";
-    include_once "./classes/LegislativeWork.php";
-    include_once "./classes/EducationalAttainment.php";
-    include_once "./classes/Comment.php";
+    include_once "Candidate.php";
+    include_once "Achievement.php";
+    include_once "Award.php";
+    include_once "LegislativeWork.php";
+    include_once "EducationalAttainment.php";
+    include_once "Comment.php";
     include_once "db.php";
 
     if(isset($_REQUEST["id"])){
@@ -77,7 +77,7 @@
             <!-- Heading Row-->
             <?php foreach($result as $q){?>
                 <div class="row gx-4 gx-lg-5 align-items-center my-5">
-                    <div class="col-lg-7"><img class="img-fluid rounded mb-4 mb-lg-0" src="forms/uploads/<?php echo $q['image_url'];?>" /></div>
+                    <div class="col-lg-7"><img class="img-fluid rounded mb-4 mb-lg-0" src="uploads/<?php echo $q['image_url'];?>" /></div>
                     <div class="col-lg-5">
                         <h1 class="font-weight-light"><?php echo $q['full_name'];?></h1>
                         <p><?php echo $q['description'];?></p>

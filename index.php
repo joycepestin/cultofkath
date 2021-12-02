@@ -1,5 +1,5 @@
 <?php
-    include "./classes/Candidate.php";
+    include "Candidate.php";
     include "db.php";
     
     $candidates = new Candidate;
@@ -107,7 +107,7 @@ presidential candidates.
                                         <p class="mb-0"><?php echo $q['description'];?></p>
                                     </div>
                                 </div>
-                                <img class="img-fluid" src="forms/uploads/<?php echo $q['image_url'];?>" alt="..." />
+                                <img class="img-fluid" src="uploads/<?php echo $q['image_url'];?>" alt="..." />
                             </a>
                         </div>
                     <?php } ?>
