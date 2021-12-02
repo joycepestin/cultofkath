@@ -14,6 +14,11 @@
             return mysqli_query($conn, $sql);
         }
 
+        function updateLegislativeWork($conn, $id, $description){
+            $sql = "UPDATE legislative_works SET description = '$description' WHERE id = $id";
+            return mysqli_query($conn, $sql);
+        }
+
         function deleteAllLegislativeWorks($conn, $candidate_name){
             $sql = "DELETE FROM legislative_works WHERE candidate_name = '$candidate_name'";
             return mysqli_query($conn, $sql);

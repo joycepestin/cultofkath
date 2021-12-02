@@ -14,6 +14,11 @@
             return mysqli_query($conn, $sql);
         }
 
+        function updateAward($conn, $id, $description){
+            $sql = "UPDATE awards SET description = '$description' WHERE id = $id";
+            return mysqli_query($conn, $sql);
+        }
+
         function deleteAllAwards($conn, $candidate_name){
             $sql = "DELETE FROM awards WHERE candidate_name = '$candidate_name'";
             return mysqli_query($conn, $sql);

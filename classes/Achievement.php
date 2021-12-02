@@ -14,6 +14,12 @@
             return mysqli_query($conn, $sql);
         }
 
+        function updateAchievement($conn, $id, $description){
+            $sql = "UPDATE achievements SET description = '$description' WHERE id = $id";
+            return mysqli_query($conn, $sql);
+        }
+
+
         function deleteAllAchievements($conn, $candidate_name){
             $sql = "DELETE FROM achievements WHERE candidate_name = $candidate_name";
             return mysqli_query($conn, $sql);

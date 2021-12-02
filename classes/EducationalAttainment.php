@@ -14,6 +14,11 @@
             return mysqli_query($conn, $sql);
         }
 
+        function updateEducationalAttainment($conn, $id, $description){
+            $sql = "UPDATE educational_attainment SET description = '$description' WHERE id = $id";
+            return mysqli_query($conn, $sql);
+        }
+
         function deleteAllEducationalAttainments($conn, $candidate_name){
             $sql = "DELETE FROM educational_attainment WHERE candidate_name = $candidate_name";
             return mysqli_query($conn, $sql);

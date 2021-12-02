@@ -21,6 +21,12 @@
         $achievement->deleteAchievement($conn, $item_id);
     }    
 
+    if(isset($_REQUEST["update"])){
+        $item_id = $_REQUEST["id"];
+        $description = $_REQUEST["description"];
+        $achievement->updateAchievement($conn, $item_id, $description);
+    }   
+
     $achievement_result = $achievement->getAllAchievements($conn, $id);
 
     if(isset($_REQUEST["next"])){
@@ -73,13 +79,17 @@
                     <thead>
                         <tr>
                             <th scope="col">Achievements</th>
-                            <th scope="col">Action</th>
                         </tr>
                     </thead>
                     <tbody>
                         <?php foreach($achievement_result as $index=>$achievement){ ?>
                             <tr>
-                                <td><?php echo $achievement['description'];?></td>
+                                <form method="POST">
+                                    <td><input type="text" class="form-control" id="description" name="description" value="<?php echo $achievement['description'];?>"><td>
+                                    <input type="text" hidden name="index" value="<?php echo $index; ?>">
+                                    <input type="text" hidden name="id" value="<?php echo $achievement['id']; ?>">
+                                    <td><button name="update" type="submit" class="btn btn-success">Update</button></td>
+                                </form>
                                 <form method="POST">
                                     <input type="text" hidden name="index" value="<?php echo $index; ?>">
                                     <input type="text" hidden name="id" value="<?php echo $achievement['id']; ?>">

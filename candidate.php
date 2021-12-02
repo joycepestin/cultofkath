@@ -4,6 +4,7 @@
     include_once "./classes/Award.php";
     include_once "./classes/LegislativeWork.php";
     include_once "./classes/EducationalAttainment.php";
+    include_once "./classes/Comment.php";
     include_once "db.php";
 
     if(isset($_REQUEST["id"])){
@@ -27,6 +28,31 @@
 
     $educational = new EducationalAttainment;
     $educational_result = $educational->getAllEducationalAttainments($conn, $id);
+
+    $comment = new Comment;
+
+    if(isset($_REQUEST["add"])){
+        if(isset($_REQUEST["id"]) && isset($_REQUEST["comment"]) && isset($_REQUEST["username"]) && $_REQUEST['comment'] != ""){
+            $content = $_REQUEST["comment"];
+            $username = $_REQUEST["username"];
+            $comment->createComment($conn, $username, $id, $content);
+            header("location: candidate.php?id=$id&candidate_name=$candidate_name&username=$username");
+        }
+    }   
+
+    if(isset($_REQUEST["enter"])){
+            $username = $_REQUEST["username"];
+            header("location: candidate.php?id=$id&candidate_name=$candidate_name&username=$username");
+    }   
+
+
+    if(isset($_REQUEST["delete"])){
+        $item_id = $_REQUEST["item_id"];
+        $comment->deleteComment($conn, $item_id);
+    }   
+
+    $comment_result = $comment->getAllComments($conn, $id);
+
 ?>
 <?php require('components/head1.inc.php'); ?>
 <body>
@@ -127,6 +153,40 @@
                         </div>
                     </div>
                 </div>
+                <form method="POST">
+                            <div class="mb-3 form-floating d-flex flex-row">
+                                <textarea class="form-control" placeholder="Username" id="username" name="username"><?php echo isset($_REQUEST['username']) ? $_REQUEST['username'] : '' ?></textarea>
+                                <label for="username">Username</label>
+                                <button name="enter" type="submit" class="m-2 btn btn-primary">Enter</button>
+                            </div>
+                        <?php if(isset($_REQUEST['username'])){ ?>
+                        <div class="mb-3 form-floating d-flex flex-row">
+                            <textarea class="form-control" placeholder="Comment" id="comment" name="comment"></textarea>
+                            <label for="comment">Comment</label>           
+                            <button name="add" type="submit" class="m-2 btn btn-primary">Add</button>
+                        </div>
+                        <?php } ?>
+                        
+                        <?php if(isset($comment_result)){ ?> 
+                                <div class="form-floating d-flex flex-column mb-2">
+                                        <?php foreach($comment_result as $index=>$comment){ ?>
+                                            <div class="d-flex flex-column border p-2">
+                                                <h6><?php echo $comment['username'];?></h6>
+                                                <p class="mx-4"><?php echo $comment['comment'];?></p>
+                                            </div>
+                                            <div>
+                                            <?php if(isset($_REQUEST['username']) && $_REQUEST['username'] == $comment['username']){ ?>
+                                                <form method="POST">
+                                                        <input type="text" hidden name="index" value="<?php echo $index; ?>">
+                                                        <input type="text" hidden name="item_id" value="<?php echo $comment['id']; ?>">
+                                                        <button name="delete" type="submit" class="btn btn-danger">Delete</button>
+                                                </form>
+                                            <?php } ?>
+                                        <?php } ?>
+                                </div>
+                            <?php } ?>
+      
+                </form>
 
         </div>
         <!-- Footer-->

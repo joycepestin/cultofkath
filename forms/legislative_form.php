@@ -13,6 +13,12 @@
             $legislative->createLegislativeWork($conn, $id, $description);
         }
     }
+
+    if(isset($_REQUEST["update"])){
+        $item_id = $_REQUEST["id"];
+        $description = $_REQUEST["description"];
+        $legislative->updateLegislativeWork($conn, $item_id, $description);
+    }   
     
     if(isset($_REQUEST["delete"])){
         $item_id = $_REQUEST["id"];
@@ -70,7 +76,12 @@
                         <tbody>
                             <?php foreach($legislative_result as $index=>$legislative){ ?>
                                 <tr>
-                                    <td><?php echo $legislative['description'];?></td>
+                                    <form method="POST">
+                                            <td><input type="text" class="form-control" id="description" name="description" value="<?php echo $legislative['description'];?>"><td>
+                                            <input type="text" hidden name="index" value="<?php echo $index; ?>">
+                                            <input type="text" hidden name="id" value="<?php echo $legislative['id']; ?>">
+                                            <td><button name="update" type="submit" class="btn btn-success">Update</button></td>
+                                        </form>
                                     <form method="POST">
                                         <input type="text" hidden name="index" value="<?php echo $index; ?>">
                                         <input type="text" hidden name="id" value="<?php echo $legislative['id']; ?>">
