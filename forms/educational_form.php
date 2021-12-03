@@ -18,11 +18,14 @@
         $item_id = $_REQUEST["id"];
         $description = $_REQUEST["new_description"];
         $educational->updateEducationalAttainment($conn, $item_id, $description);
+        header("location: educational_form.php?candidate_id=$id&candidate_name=$candidate_name&editing=1&info=updated");
     }   
     
     if(isset($_REQUEST["delete"])){
         $item_id = $_REQUEST["id"];
         $educational->deleteEducationalAttainment($conn, $item_id);
+        header("location: educational_form.php?candidate_id=$id&candidate_name=$candidate_name&editing=1&info=deleted");
+
     }      
 
     $educational_result = $educational->getAllEducationalAttainments($conn, $id);
@@ -67,6 +70,18 @@
                     <button name="edit" class="btn btn-danger">Logout</button>
             </form>
 </nav>
+<?php if(isset($_REQUEST["info"])){ ?>
+            <?php if($_REQUEST["info"] == "updated"){ ?>
+                <div class="alert alert-success" role="alert">
+                    <h4 class="text-center">Educational attainment updated successfully!</h4>
+                </div>
+            <?php } else if($_REQUEST["info"] == "deleted"){ ?>
+                <div class="alert alert-success" role="alert">
+                    <h4 class="text-center">Educational attainment deleted successfully!</h4>
+                </div>
+            <?php } ?>
+    <?php } ?>
+
     <div class="container my-5" style="max-width:60%, min-width:50%">
         <form method="POST">
                 <div class="mb-3 form-floating d-flex flex-row">

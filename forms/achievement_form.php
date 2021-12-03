@@ -19,12 +19,14 @@
     if(isset($_REQUEST["delete_achievement"])){
         $item_id = $_REQUEST["id"];
         $achievement->deleteAchievement($conn, $item_id);
+        header("location: achievement_form.php?candidate_id=$id&candidate_name=$candidate_name&editing=1&info=deleted");
     }    
 
     if(isset($_REQUEST["update"])){
         $item_id = $_REQUEST["id"];
         $description = $_REQUEST["new_description"];
         $achievement->updateAchievement($conn, $item_id, $description);
+        header("location: achievement_form.php?candidate_id=$id&candidate_name=$candidate_name&editing=1&info=updated");
     }   
 
     $achievement_result = $achievement->getAllAchievements($conn, $id);
@@ -76,6 +78,19 @@
                     <button name="edit" class="btn btn-danger">Logout</button>
             </form>
 </nav>
+
+<?php if(isset($_REQUEST["info"])){ ?>
+            <?php if($_REQUEST["info"] == "updated"){ ?>
+                <div class="alert alert-success" role="alert">
+                    <h4 class="text-center">Achievement updated successfully!</h4>
+                </div>
+            <?php } else if($_REQUEST["info"] == "deleted"){ ?>
+                <div class="alert alert-success" role="alert">
+                    <h4 class="text-center">Achievement deleted successfully!</h4>
+                </div>
+            <?php } ?>
+    <?php } ?>
+
     <div class="container my-5" style="max-width:60%, min-width:50%">
         <form method="POST">
             <div class="mb-3 form-floating d-flex flex-row">

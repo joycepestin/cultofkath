@@ -3,6 +3,7 @@
     require_once('..\classes\Achievement.php');
     require_once('..\classes\Award.php');
     require_once('..\db.php');
+
     $candidate = new Candidate;
     $award = new Award;
     $achievement = new Achievement;
@@ -199,7 +200,7 @@
             <div class="d-flex justify-content-center">
                 <?php if(isset($_REQUEST["candidate_id"])) {?>
                     <a href="candidate_form.php" class="btn btn-danger">Clear</a>
-                    <button name="update" type="submit" class="btn btn-success">Update</button>
+                    <button name="update" type="submit" class="btn btn-success mx-2">Update</button>
                 <?php } ?>
                 <button name="submit" type="submit" class="btn btn-primary">Next</button>
             </div>
@@ -218,7 +219,7 @@
                         <a href="../candidate.php?id=<?php echo $q['id']; ?>&candidate_name=<?php echo $q['candidate_name']; ?>" class="btn btn-primary">View</a>                
                         <form method="POST">
                             <input type="text" hidden name="candidate_id" value="<?php echo $q['id']; ?>">
-                            <button name="edit" class="btn btn-danger">Edit</button>
+                            <button name="edit" class="btn btn-primary mx-2">Edit</button>
                         </form>
                         <form method="POST">
                             <input type="text" hidden name="id" value="<?php echo $q['id']; ?>">
