@@ -1,7 +1,7 @@
 <?php 
-    require_once('..\classes\EducationalAttainment.php');
-    require_once('..\classes\Candidate.php');
-    require_once('..\db.php');
+    require_once('../classes/EducationalAttainment.php');
+    require_once('../classes/Candidate.php');
+    require_once('../db.php');
     $educational = new EducationalAttainment;
     $candidate = new Candidate;
     $candidate_name = $_REQUEST["candidate_name"];
@@ -44,8 +44,8 @@
             }
         }
         else{
+           $candidate->deleteCandidate($conn,$id);
             header("location: candidate_form.php");
-            $candidate->deleteCandidate($conn,$id);
         }
     }
 ?>

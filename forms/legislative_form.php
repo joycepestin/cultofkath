@@ -1,7 +1,7 @@
 <?php 
-    require_once('..\classes\LegislativeWork.php');
-    require_once('..\classes\Candidate.php');
-    require_once('..\db.php');
+    require_once('../classes/LegislativeWork.php');
+    require_once('../classes/Candidate.php');
+    require_once('../db.php');
     $legislative = new LegislativeWork;
     $candidate = new Candidate;
     $candidate_name = $_REQUEST["candidate_name"];
@@ -24,7 +24,7 @@
     if(isset($_REQUEST["delete"])){
         $item_id = $_REQUEST["id"];
         $legislative->deleteLegislativeWork($conn, $item_id);
-        header("location: legislative_form.php?candidate_id=$id&candidate_name=$candidate_name&editing=1&info=updated");
+        header("location: legislative_form.php?candidate_id=$id&candidate_name=$candidate_name&editing=1&info=deleted");
     }      
 
     $legislative_result = $legislative->getAllLegislativeWorks($conn, $id);
@@ -43,8 +43,8 @@
             }
         }
         else{
-            header("location: candidate_form.php");
             $candidate->deleteCandidate($conn,$id);
+            header("location: candidate_form.php");
         }
     }
 ?>
