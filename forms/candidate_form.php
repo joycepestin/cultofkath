@@ -1,11 +1,17 @@
 <?php 
-    require_once('..\classes\Candidate.php');
-    require_once('..\classes\Achievement.php');
-    require_once('..\classes\Award.php');
-    require_once('..\db.php');
+    require_once('../classes/Candidate.php');
+    require_once('../classes/Achievement.php');
+    require_once('../classes/Award.php');
+    require_once('../db.php');
+
     $candidate = new Candidate;
     $award = new Award;
     $achievement = new Achievement;
+    session_start();
+
+    if(!isset($_SESSION["username"])){
+        header("location: ../login.php");
+    }
     
     if(isset($_REQUEST["delete"])){
         $id = $_REQUEST["id"];
@@ -20,9 +26,6 @@
         if(isset($_REQUEST["editing"]) && $_REQUEST["editing"] == "1"){
             $candidate_name = $_REQUEST["candidate_name"];
             $id = $_REQUEST["candidate_id"];
-            foreach($obj as $ob){
-                $id = $ob["id"];
-            }
             header("location: achievement_form.php?candidate_id=$id&candidate_name=$candidate_name&editing=1");
         }
         else{
@@ -35,7 +38,7 @@
         
                 $full_name = $_REQUEST["full_name"];
                 $description = $_REQUEST["description"];
-                $id = $_REQUEST["candidate_id"];
+              
         
                 if ($error === 0) {
                     if ($img_size > 125000) {
@@ -53,28 +56,33 @@
                             // echo '<div class="alb">';
                             // echo  '<img src="uploads/'.$new_img_name.'">';
                             // echo '</div>';
+                            
+                            $candidate_name = $_REQUEST["full_name"];
+                            $full_name = $_REQUEST["full_name"];
+                            $description = $_REQUEST["description"];
+                            $candidate->createCandidate($conn, $candidate_name, $description, $full_name, $new_img_name);
+                            $obj = $candidate->getCandidateByName($conn, $full_name);
+                            foreach($obj as $ob){
+                                $id = $ob["id"];
+                            }
+                            header("location: achievement_form.php?candidate_id=$id&candidate_name=$candidate_name");
+                            
                         }else {
-                            echo '<div class="alert alert-success" role="alert">';
-                            echo '<h4 class="text-center">You cant upload files of this type!</h4>';
-                            echo '</div>';
+                            $err = "You cant upload files of this type!";
+                            header("location: candidate_form.php?info=error&message=$err");
                         }
                     }
                 }else {
-                    echo '<div class="alert alert-success" role="alert">';
-                    echo '<h4 class="text-center">"unknown error occurred!</h4>';
-                    echo '</div>';
+                    $err = "Please select image!";
+                    header("location: candidate_form.php?info=error&message=$err");
                 }
-
-                $candidate_name = $_REQUEST["full_name"];
-                $full_name = $_REQUEST["full_name"];
-                $description = $_REQUEST["description"];
-                $candidate->createCandidate($conn, $candidate_name, $description, $full_name, $new_img_name);
-                $obj = $candidate->getCandidateByName($conn, $full_name);
-                foreach($obj as $ob){
-                    $id = $ob["id"];
                 }
-                header("location: achievement_form.php?candidate_id=$id&candidate_name=$candidate_name");
+            else{
+                $err = "Please fill out the form!";
+                    header("location: candidate_form.php?info=error&message=$err");
             }
+
+
         }
     }
     
@@ -106,24 +114,27 @@
                         // echo '<div class="alb">';
                         // echo  '<img src="uploads/'.$new_img_name.'">';
                         // echo '</div>';
+                        
                     }else {
-                        echo '<div class="alert alert-success" role="alert">';
-                        echo '<h4 class="text-center">You cant upload files of this type!</h4>';
-                        echo '</div>';
+                        $message = "You cant upload files of this type!";
+                        header("location: candidate_form?info=error&message=$message");
                     }
                 }
-            }else {
-                echo '<div class="alert alert-success" role="alert">';
-                echo '<h4 class="text-center">"unknown error occurred!</h4>';
-                echo '</div>';
             }
+                $id = $_REQUEST["candidate_id"];
+                $full_name = $_REQUEST["full_name"];
+                $candidate_name = $_REQUEST["candidate_name"];
+                $description = $_REQUEST["description"];
+                if($_REQUEST["image_url"]){
+                    $image_url = $_REQUEST["image_url"];
+                }
+                else{
+                    $image_url = $new_img_name;
+                }
+                $candidate->updateCandidate($conn, $id, $full_name, $description,$image_url);
+                header("location: candidate_form.php?candidate_id=$id&candidate_name=$candidate_name&full_name=$full_name&description=$description&editing=1");
 
-            $id = $_REQUEST["candidate_id"];
-            $full_name = $_REQUEST["full_name"];
-            $candidate_name = $_REQUEST["candidate_name"];
-            $description = $_REQUEST["description"];
-            $candidate->updateCandidate($conn, $id, $full_name, $description,$new_img_name);
-            header("location: candidate_form.php?candidate_id=$id&candidate_name=$candidate_name&full_name=$full_name&description=$description&editing=1");
+
         }
     }
 
@@ -179,6 +190,10 @@
                 <div class="alert alert-success" role="alert">
                     <h4 class="text-center">Post deleted successfully!</h4>
                 </div>
+            <?php } else if($_REQUEST["info"] == "error"){ ?>
+                <div class="alert alert-success" role="alert">
+                    <h4 class="text-center"> <?php echo $_REQUEST["message"]; ?></h4>
+                </div>
             <?php } ?>
     <?php } ?>
     <div class="container my-5" style="max-width:60%, min-width:50%">
@@ -199,7 +214,7 @@
             <div class="d-flex justify-content-center">
                 <?php if(isset($_REQUEST["candidate_id"])) {?>
                     <a href="candidate_form.php" class="btn btn-danger">Clear</a>
-                    <button name="update" type="submit" class="btn btn-success">Update</button>
+                    <button name="update" type="submit" class="btn btn-success mx-2">Update</button>
                 <?php } ?>
                 <button name="submit" type="submit" class="btn btn-primary">Next</button>
             </div>
@@ -218,7 +233,7 @@
                         <a href="../candidate.php?id=<?php echo $q['id']; ?>&candidate_name=<?php echo $q['candidate_name']; ?>" class="btn btn-primary">View</a>                
                         <form method="POST">
                             <input type="text" hidden name="candidate_id" value="<?php echo $q['id']; ?>">
-                            <button name="edit" class="btn btn-danger">Edit</button>
+                            <button name="edit" class="btn btn-primary mx-2">Edit</button>
                         </form>
                         <form method="POST">
                             <input type="text" hidden name="id" value="<?php echo $q['id']; ?>">

@@ -1,7 +1,7 @@
 <?php 
-    require_once('..\classes\LegislativeWork.php');
-    require_once('..\classes\Candidate.php');
-    require_once('..\db.php');
+    require_once('../classes/LegislativeWork.php');
+    require_once('../classes/Candidate.php');
+    require_once('../db.php');
     $legislative = new LegislativeWork;
     $candidate = new Candidate;
     $candidate_name = $_REQUEST["candidate_name"];
@@ -18,11 +18,13 @@
         $item_id = $_REQUEST["id"];
         $description = $_REQUEST["new_description"];
         $legislative->updateLegislativeWork($conn, $item_id, $description);
+        header("location: legislative_form.php?candidate_id=$id&candidate_name=$candidate_name&editing=1&info=updated");
     }   
     
     if(isset($_REQUEST["delete"])){
         $item_id = $_REQUEST["id"];
         $legislative->deleteLegislativeWork($conn, $item_id);
+        header("location: legislative_form.php?candidate_id=$id&candidate_name=$candidate_name&editing=1&info=deleted");
     }      
 
     $legislative_result = $legislative->getAllLegislativeWorks($conn, $id);
@@ -41,8 +43,8 @@
             }
         }
         else{
-            header("location: candidate_form.php");
             $candidate->deleteCandidate($conn,$id);
+            header("location: candidate_form.php");
         }
     }
 ?>
@@ -67,6 +69,18 @@
                     <button name="edit" class="btn btn-danger">Logout</button>
             </form>
 </nav>
+<?php if(isset($_REQUEST["info"])){ ?>
+            <?php if($_REQUEST["info"] == "updated"){ ?>
+                <div class="alert alert-success" role="alert">
+                    <h4 class="text-center">Legislative work updated successfully!</h4>
+                </div>
+            <?php } else if($_REQUEST["info"] == "deleted"){ ?>
+                <div class="alert alert-success" role="alert">
+                    <h4 class="text-center">Legislative work deleted successfully!</h4>
+                </div>
+            <?php } ?>
+    <?php } ?>
+
     <div class="container my-5" style="max-width:60%, min-width:50%">
         <form method="POST">
                 <div class="mb-3 form-floating d-flex flex-row">

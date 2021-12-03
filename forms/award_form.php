@@ -1,8 +1,8 @@
 <?php 
-    require_once('..\classes\Award.php');
-    require_once('..\classes\Achievement.php');
-    require_once('..\classes\Candidate.php');
-    require_once('..\db.php');
+    require_once('../classes/Award.php');
+    require_once('../classes/Achievement.php');
+    require_once('../classes/Candidate.php');
+    require_once('../db.php');
     $award = new Award;
     $candidate = new Candidate;
     $candidate_name = $_REQUEST["candidate_name"];
@@ -19,11 +19,14 @@
         $item_id = $_REQUEST["id"];
         $description = $_REQUEST["new_description"];
         $award->updateAward($conn, $item_id, $description);
+        header("location: award_form.php?candidate_id=$id&candidate_name=$candidate_name&editing=1&info=updated");
     }   
     
     if(isset($_REQUEST["delete"])){
         $item_id = $_REQUEST["id"];
         $award->deleteAward($conn, $item_id);
+        header("location: award_form.php?candidate_id=$id&candidate_name=$candidate_name&editing=1&info=deleted");
+
     }      
 
     $award_result = $award->getAllAwards($conn, $id);
@@ -42,8 +45,8 @@
             }
         }
         else{
-            header("location: candidate_form.php");
             $candidate->deleteCandidate($conn,$id);
+            header("location: candidate_form.php");
         }
     }
 ?>
@@ -68,6 +71,18 @@
                     <button name="edit" class="btn btn-danger">Logout</button>
             </form>
 </nav>
+
+<?php if(isset($_REQUEST["info"])){ ?>
+            <?php if($_REQUEST["info"] == "updated"){ ?>
+                <div class="alert alert-success" role="alert">
+                    <h4 class="text-center">Award updated successfully!</h4>
+                </div>
+            <?php } else if($_REQUEST["info"] == "deleted"){ ?>
+                <div class="alert alert-success" role="alert">
+                    <h4 class="text-center">Award deleted successfully!</h4>
+                </div>
+            <?php } ?>
+    <?php } ?>
 
     <div class="container my-5" style="max-width:60%, min-width:50%">
         <form method="POST">

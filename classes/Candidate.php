@@ -1,6 +1,8 @@
 <?php
     require_once('Award.php');
     require_once('Achievement.php');
+    require_once('EducationalAttainment.php');
+    require_once('LegislativeWork.php');
     class Candidate{
         public $id;
         public $candidate_name;
@@ -16,9 +18,13 @@
         function deleteCandidate($conn, $id){
             $award = new Award;
             $achievement = new Achievement;
+            $educational = new EducationalAttainment;
+            $legislative = new LegislativeWork;
             $sql = "DELETE FROM candidates WHERE id = $id";
             $award->deleteAllAwards($conn,$id);
             $achievement->deleteAllAchievements($conn,$id);
+            $educational->deleteAllEducationalAttainments($conn,$id);
+            $legislative->deleteAllLegislativeWorks($conn,$id);
             return mysqli_query($conn, $sql);
         }
 

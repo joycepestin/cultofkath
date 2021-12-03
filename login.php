@@ -1,9 +1,8 @@
 <?php
     include "db.php";
-    require('components/login.inc.php'); 
 ?>
 <?php 
-
+    session_start();
 	if (isset($_POST['login'])){
     	$Username = $_POST['username'];
     	$Pass = $_POST['password'];
@@ -13,36 +12,25 @@
 
     	if(is_array($row)) {
         	$_SESSION["username"] = $row['username'];
-        	$_SESSION["password"] = $row['password'];
+        	$_SESSION["password"] = $row['pass'];
+
+			if(isset($_SESSION["username"])){
+				header("Location: forms/candidate_form.php");
+			}
     	}   else {
         	echo '<script type = "text/javascript">';
         	echo 'alert("Invalid Username or Password!");';
         	echo 'window.location.href = "login.php" ';
         	echo '</script>';
     	}
-
-    }
-    if(isset($_SESSION["username"])){
-        header("Location:forms/candidate_form.php");
     }
 
 ?>
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <style>
-        body{
-            text-align: center;
-        }
+<?php
+    require('components/login.inc.php'); 
 
-        .field{
-            margin-bottom: 20px;
-        }
-    </style>
-</head>
+?>
 <body>
     
 <div class="login-wrap my-4">
