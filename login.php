@@ -13,17 +13,16 @@
 
     	if(is_array($row)) {
         	$_SESSION["username"] = $row['username'];
-        	$_SESSION["password"] = $row['password'];
+        	$_SESSION["password"] = $row['pass'];
     	}   else {
         	echo '<script type = "text/javascript">';
         	echo 'alert("Invalid Username or Password!");';
         	echo 'window.location.href = "login.php" ';
         	echo '</script>';
     	}
-
     }
     if(isset($_SESSION["username"])){
-        header("Location:candidate_form.php");
+        header("Location: forms/candidate_form.php");
     }
 
 ?>
